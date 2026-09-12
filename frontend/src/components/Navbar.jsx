@@ -34,44 +34,44 @@ export default function Navbar() {
     <header
       className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-md sticky top-0 z-50 transition-all border-b ${
         scrolled
-          ? 'border-emerald-100 dark:border-slate-800 shadow-md shadow-slate-900/5 dark:shadow-black/20'
-          : 'border-emerald-100 dark:border-slate-800'
+          ? 'border-slate-200/80 dark:border-slate-800 shadow-sm shadow-slate-900/5 dark:shadow-black/20'
+          : 'border-slate-100 dark:border-slate-800'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-md shadow-emerald-500/20 group-hover:scale-105 transition">
+            <div className="w-11 h-11 rounded-xl bg-[#ec4d25] flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform duration-200">
               <HiAcademicCap className="text-2xl text-white" />
             </div>
             <div>
-              <span className="text-2xl font-black tracking-tight text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition">
-                GTT<span className="text-emerald-600 dark:text-emerald-400"> Foundation</span>
+              <span className="text-2xl font-black tracking-tight text-slate-900 dark:text-white group-hover:text-[#ec4d25] transition-colors">
+                GTT<span className="text-[#ec4d25]"> Foundation</span>
               </span>
-              <p className="text-[10px] uppercase font-bold tracking-widest text-emerald-600 dark:text-emerald-400 -mt-1">
+              <p className="text-[10px] uppercase font-bold tracking-widest text-[#ec4d25] -mt-1">
                 Empowering Communities
               </p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-7">
             {navLinks.map((link) => {
               const active = pathname === link.path;
               return (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`text-sm font-semibold transition-all py-1 relative ${
+                  className={`text-sm font-semibold transition-colors py-1 relative ${
                     active
-                      ? 'text-emerald-700 dark:text-emerald-400'
-                      : 'text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400'
+                      ? 'text-[#ec4d25] dark:text-[#f78c72]'
+                      : 'text-slate-600 dark:text-slate-300 hover:text-[#ec4d25] dark:hover:text-[#f78c72]'
                   }`}
                 >
                   {link.name}
                   {active && (
-                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-emerald-600 dark:bg-emerald-400 rounded-full" />
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#ec4d25] rounded-full" />
                   )}
                 </Link>
               );
@@ -85,7 +85,7 @@ export default function Navbar() {
               onClick={toggleTheme}
               aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
               title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-              className="w-10 h-10 rounded-xl flex items-center justify-center text-slate-500 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              className="w-10 h-10 rounded-xl flex items-center justify-center text-slate-500 dark:text-slate-300 hover:text-[#ec4d25] dark:hover:text-[#f78c72] hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
             >
               {theme === 'dark' ? <MdOutlineLightMode size={22} /> : <MdOutlineDarkMode size={22} />}
             </button>
@@ -94,9 +94,9 @@ export default function Navbar() {
               <div className="flex items-center gap-2.5">
                 <Link
                   to="/dashboard"
-                  className="flex items-center gap-1.5 px-3.5 py-2 text-sm font-semibold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/40 rounded-xl transition border border-emerald-200 dark:border-emerald-900"
+                  className="flex items-center gap-1.5 px-3.5 py-2 text-sm font-semibold text-[#ec4d25] dark:text-[#f78c72] bg-[#fff5f2] dark:bg-[#ec4d25]/10 hover:bg-[#ffede8] dark:hover:bg-[#ec4d25]/20 rounded-xl transition border border-[#ffdcd2] dark:border-[#ec4d25]/30"
                 >
-                  <HiShieldCheck className="text-lg text-emerald-600 dark:text-emerald-400" />
+                  <HiShieldCheck className="text-lg text-[#ec4d25] dark:text-[#f78c72]" />
                   Dashboard
                 </Link>
                 <button
@@ -109,7 +109,7 @@ export default function Navbar() {
             ) : (
               <Link
                 to="/login"
-                className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition"
+                className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-[#ec4d25] dark:hover:text-[#f78c72] transition"
               >
                 <HiUser className="text-base text-slate-400 dark:text-slate-500" />
                 Staff Login
@@ -118,9 +118,9 @@ export default function Navbar() {
 
             <Link
               to="/donate"
-              className="flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-md shadow-emerald-600/25 hover:shadow-lg hover:shadow-emerald-600/30 hover:scale-[1.02] active:scale-[0.98] transition"
+              className="flex items-center gap-2 bg-[#ec4d25] hover:bg-[#d73e16] active:bg-[#b8310e] text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-sm hover:shadow transition-all"
             >
-              <HiHeart className="text-rose-300 animate-pulse text-base" />
+              <HiHeart className="text-white text-base" />
               Donate Now
             </Link>
           </div>
@@ -136,9 +136,9 @@ export default function Navbar() {
             </button>
             <Link
               to="/donate"
-              className="flex items-center gap-1 bg-emerald-600 text-white px-3.5 py-1.5 rounded-lg text-xs font-bold shadow-sm"
+              className="flex items-center gap-1 bg-[#ec4d25] text-white px-3.5 py-1.5 rounded-lg text-xs font-bold shadow-sm"
             >
-              <HiHeart className="text-rose-300" />
+              <HiHeart className="text-white" />
               Donate
             </Link>
             <button
@@ -161,7 +161,7 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 className={`block px-4 py-2.5 rounded-xl text-sm font-semibold transition ${
                   pathname === link.path
-                    ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 font-bold'
+                    ? 'bg-[#fff5f2] dark:bg-[#ec4d25]/10 text-[#ec4d25] dark:text-[#f78c72] font-bold'
                     : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
                 }`}
               >
@@ -175,9 +175,9 @@ export default function Navbar() {
                   <Link
                     to="/dashboard"
                     onClick={() => setOpen(false)}
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300"
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold bg-[#fff5f2] dark:bg-[#ec4d25]/10 text-[#ec4d25] dark:text-[#f78c72]"
                   >
-                    <HiShieldCheck className="text-lg text-emerald-600 dark:text-emerald-400" />
+                    <HiShieldCheck className="text-lg text-[#ec4d25] dark:text-[#f78c72]" />
                     Dashboard
                   </Link>
                   <button

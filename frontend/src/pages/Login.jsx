@@ -56,30 +56,27 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex">
-      {/* Left Branding Panel - Desktop Only */}
-      <div className="hidden lg:flex lg:w-1/2 relative bg-gradient-to-br from-slate-950 via-emerald-950 to-slate-900 text-white flex-col justify-between p-12 overflow-hidden">
-        {/* Background effects */}
-        <div className="absolute top-20 left-20 w-72 h-72 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none animate-float" />
-        <div className="absolute bottom-20 right-10 w-64 h-64 bg-teal-400/10 rounded-full blur-3xl pointer-events-none" style={{ animation: 'float 8s ease-in-out infinite 2s' }} />
+      {/* Left Branding Panel - Desktop Only (Clean Slate, Zero Glow) */}
+      <div className="hidden lg:flex lg:w-1/2 relative bg-slate-900 text-white flex-col justify-between p-12 overflow-hidden border-r border-slate-800">
         <div
           className="absolute inset-0 opacity-[0.03] pointer-events-none"
           style={{
             backgroundImage: 'linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)',
-            backgroundSize: '48px 48px',
+            backgroundSize: '40px 40px',
           }}
         />
 
         {/* Top: Logo */}
         <div className="relative z-10">
-          <Link to="/" className="inline-flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white text-2xl shadow-lg shadow-emerald-500/25">
+          <Link to="/" className="inline-flex items-center gap-3 group">
+            <div className="w-12 h-12 rounded-xl bg-[#ec4d25] flex items-center justify-center text-white text-2xl shadow-sm group-hover:scale-105 transition-transform">
               <HiAcademicCap className="text-2xl text-white" />
             </div>
             <div>
               <span className="text-2xl font-black tracking-tight">
-                GTT<span className="text-emerald-400"> Foundation</span>
+                GTT<span className="text-[#ec4d25]"> Foundation</span>
               </span>
-              <p className="text-[10px] uppercase font-bold tracking-widest text-emerald-400/70">Admin Portal</p>
+              <p className="text-[10px] uppercase font-bold tracking-widest text-[#f78c72]">Admin Portal</p>
             </div>
           </Link>
         </div>
@@ -90,9 +87,9 @@ export default function Login() {
             <h2 className="text-4xl font-black tracking-tight leading-tight">
               Manage Your
               <br />
-              <span className="text-gradient">Impact Operations</span>
+              <span className="text-[#ec4d25]">Impact Operations</span>
             </h2>
-            <p className="text-emerald-100/60 mt-4 text-base leading-relaxed max-w-md">
+            <p className="text-slate-300 mt-4 text-base leading-relaxed max-w-md">
               Access your complete NGO command center — manage programs, events, donations, volunteers, and community communications from one unified dashboard.
             </p>
           </div>
@@ -104,8 +101,8 @@ export default function Login() {
               { icon: HiCheckCircle, text: 'CRUD operations for programs, events & blogs' },
               { icon: HiCheckCircle, text: 'Donation ledger & volunteer management' },
             ].map((item) => (
-              <div key={item.text} className="flex items-center gap-3 text-sm text-emerald-200/70">
-                <item.icon className="text-emerald-400 text-lg flex-shrink-0" />
+              <div key={item.text} className="flex items-center gap-3 text-sm text-slate-300">
+                <item.icon className="text-[#ec4d25] text-lg flex-shrink-0" />
                 <span>{item.text}</span>
               </div>
             ))}
@@ -114,29 +111,25 @@ export default function Login() {
 
         {/* Bottom: Quote */}
         <div className="relative z-10">
-          <div className="bg-white/5 border border-white/10 rounded-xl p-5">
-            <p className="text-sm text-emerald-100/70 italic leading-relaxed">
+          <div className="bg-slate-800/80 border border-slate-700 rounded-xl p-5">
+            <p className="text-sm text-slate-300 italic leading-relaxed">
               "The dashboard streamlined our operations — we now manage 5,000+ beneficiaries, 200+ partners, and ₹12L+ in donations effortlessly."
             </p>
-            <p className="text-xs text-emerald-400 font-semibold mt-3">— GTT Operations Team</p>
+            <p className="text-xs text-[#f78c72] font-semibold mt-3">— GTT Operations Team</p>
           </div>
         </div>
       </div>
 
       {/* Right Login Form Panel */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center bg-slate-50 dark:bg-slate-950 relative overflow-hidden transition-colors">
-        {/* Mobile-only background effects */}
-        <div className="lg:hidden absolute top-1/4 left-1/3 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="lg:hidden absolute bottom-10 right-1/4 w-80 h-80 bg-teal-400/5 rounded-full blur-3xl pointer-events-none" />
-
         <div className="relative z-10 w-full max-w-md mx-auto px-6 sm:px-8 py-12">
           {/* Mobile logo */}
           <div className="lg:hidden text-center mb-8">
             <Link to="/" className="inline-flex items-center gap-2 text-2xl font-black text-slate-900 dark:text-white">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white text-xl shadow-md">
+              <div className="w-10 h-10 rounded-xl bg-[#ec4d25] flex items-center justify-center text-white text-xl shadow-sm">
                 <HiAcademicCap className="text-xl text-white" />
               </div>
-              <span>GTT<span className="text-emerald-600 dark:text-emerald-400"> Foundation</span></span>
+              <span>GTT<span className="text-[#ec4d25]"> Foundation</span></span>
             </Link>
           </div>
 
@@ -153,18 +146,18 @@ export default function Login() {
 
           <div className="mt-8 space-y-6 animate-fade-in-up" style={{ animationDelay: '0.15s' }}>
             {/* Quick Demo Pill */}
-            <div className="p-3.5 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 rounded-xl flex items-center justify-between">
+            <div className="p-3.5 bg-[#fff5f2] dark:bg-[#ec4d25]/10 border border-[#ffdcd2] dark:border-[#ec4d25]/30 rounded-xl flex items-center justify-between">
               <div>
-                <span className="font-bold text-emerald-900 dark:text-emerald-300 text-xs block flex items-center gap-1.5">
-                  <HiLightningBolt className="text-amber-500" /> Quick Demo Access
+                <span className="font-bold text-[#ec4d25] dark:text-[#f78c72] text-xs block flex items-center gap-1.5">
+                  <HiLightningBolt className="text-[#ec4d25]" /> Quick Demo Access
                 </span>
-                <span className="text-emerald-700 dark:text-emerald-400 text-[11px]">admin@gttfoundation.org</span>
+                <span className="text-slate-600 dark:text-slate-400 text-[11px]">admin@gttfoundation.org</span>
               </div>
               <button
                 type="button"
                 onClick={handleDemoLogin}
                 disabled={loading}
-                className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-lg transition flex items-center gap-1.5 shadow-sm text-xs disabled:opacity-50"
+                className="px-4 py-2 bg-[#ec4d25] hover:bg-[#d73e16] text-white font-bold rounded-lg transition flex items-center gap-1.5 shadow-sm text-xs disabled:opacity-50 cursor-pointer"
               >
                 <HiLightningBolt />
                 Demo Login
@@ -196,7 +189,7 @@ export default function Login() {
                       placeholder="e.g. Jane Sharma"
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition dark:text-white dark:placeholder-slate-500"
+                      className="w-full pl-10 pr-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#ec4d25] focus:border-[#ec4d25] transition dark:text-white dark:placeholder-slate-500"
                     />
                   </div>
                 </div>
@@ -214,7 +207,7 @@ export default function Login() {
                     placeholder="admin@gttfoundation.org"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition dark:text-white dark:placeholder-slate-500"
+                    className="w-full pl-10 pr-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#ec4d25] focus:border-[#ec4d25] transition dark:text-white dark:placeholder-slate-500"
                   />
                 </div>
               </div>
@@ -231,7 +224,7 @@ export default function Login() {
                     placeholder="••••••••"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full pl-10 pr-12 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition dark:text-white dark:placeholder-slate-500"
+                    className="w-full pl-10 pr-12 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#ec4d25] focus:border-[#ec4d25] transition dark:text-white dark:placeholder-slate-500"
                   />
                   <button
                     type="button"
@@ -247,7 +240,7 @@ export default function Login() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold py-3.5 rounded-xl text-sm shadow-lg shadow-emerald-600/20 transition-all disabled:opacity-50 hover:shadow-emerald-600/30 active:scale-[0.98] mt-2"
+                className="w-full bg-[#ec4d25] hover:bg-[#d73e16] active:bg-[#b8310e] text-white font-extrabold py-3.5 rounded-xl text-sm shadow-sm transition-all disabled:opacity-50 mt-2 cursor-pointer"
               >
                 {loading
                   ? 'Authenticating...'
@@ -261,7 +254,7 @@ export default function Login() {
               <button
                 type="button"
                 onClick={() => setIsSignUp(!isSignUp)}
-                className="font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition"
+                className="font-bold text-[#ec4d25] dark:text-[#f78c72] hover:text-[#d73e16] transition cursor-pointer"
               >
                 {isSignUp ? 'Already have an account? Sign In' : 'Need a new admin login? Sign Up'}
               </button>

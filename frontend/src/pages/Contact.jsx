@@ -44,20 +44,17 @@ export default function Contact() {
 
   return (
     <div className="bg-slate-50 dark:bg-slate-950 min-h-screen transition-colors">
-      {/* Header */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 text-white py-24 sm:py-28">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 right-20 w-80 h-80 bg-teal-400 rounded-full blur-3xl" />
-        </div>
+      {/* Header — Clean Slate, Zero Glow Blobs */}
+      <section className="relative overflow-hidden bg-slate-900 text-white py-24 sm:py-28 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <span className="text-xs font-black uppercase tracking-widest text-emerald-400 bg-emerald-900/60 px-4 py-1.5 rounded-full border border-emerald-500/30 backdrop-blur-sm">
+          <span className="text-xs font-black uppercase tracking-widest text-[#f78c72] bg-[#ec4d25]/15 px-4 py-1.5 rounded-full border border-[#ec4d25]/30 backdrop-blur-sm">
             Reach Out
           </span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black mt-6 tracking-tight">
             Contact Our{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">Team</span>
+            <span className="text-[#ec4d25]">Team</span>
           </h1>
-          <p className="text-emerald-100/80 text-lg sm:text-xl max-w-3xl mt-6 leading-relaxed">
+          <p className="text-slate-300 text-lg sm:text-xl max-w-3xl mt-6 leading-relaxed">
             Have questions about our initiatives, want to partner, or need support? We're always here to help.
           </p>
         </div>
@@ -70,7 +67,7 @@ export default function Contact() {
           <div className="lg:col-span-7">
             <div className="bg-white dark:bg-slate-900 rounded-2xl p-8 sm:p-10 border border-slate-200/80 dark:border-slate-800 shadow-sm transition-colors animate-fade-in-up">
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 text-white flex items-center justify-center shadow-md">
+                <div className="w-12 h-12 rounded-xl bg-[#ec4d25] text-white flex items-center justify-center shadow-sm">
                   <HiChatAlt2 className="text-xl" />
                 </div>
                 <div>
@@ -88,7 +85,7 @@ export default function Contact() {
                     <input
                       type="text" required placeholder="e.g. Ramesh Patel"
                       value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
+                      className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#ec4d25] transition"
                     />
                   </div>
                   <div>
@@ -98,7 +95,7 @@ export default function Contact() {
                     <input
                       type="email" required placeholder="ramesh@example.com"
                       value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
+                      className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#ec4d25] transition"
                     />
                   </div>
                 </div>
@@ -111,7 +108,7 @@ export default function Contact() {
                     <input
                       type="tel" placeholder="+91 98765 43210"
                       value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                      className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
+                      className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#ec4d25] transition"
                     />
                   </div>
                   <div>
@@ -121,7 +118,7 @@ export default function Contact() {
                     <input
                       type="text" placeholder="e.g. CSR Partnership / Volunteer"
                       value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                      className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
+                      className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#ec4d25] transition"
                     />
                   </div>
                 </div>
@@ -133,13 +130,13 @@ export default function Contact() {
                   <textarea
                     required rows={5} placeholder="Tell us how we can collaborate or assist you..."
                     value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none transition"
+                    className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#ec4d25] resize-none transition"
                   />
                 </div>
 
                 <button
                   type="submit" disabled={submitting}
-                  className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold py-3.5 rounded-xl text-sm shadow-lg shadow-emerald-600/20 transition disabled:opacity-50 active:scale-[0.98]"
+                  className="w-full bg-[#ec4d25] hover:bg-[#d73e16] active:bg-[#b8310e] text-white font-extrabold py-3.5 rounded-xl text-sm shadow-sm transition disabled:opacity-50 cursor-pointer"
                 >
                   {submitting ? 'Sending Message...' : 'Submit Inquiry'}
                 </button>
@@ -153,7 +150,7 @@ export default function Contact() {
               <h3 className="text-xl font-bold text-slate-900 dark:text-white">Headquarters</h3>
               <div className="space-y-5 text-sm text-slate-600 dark:text-slate-400">
                 <div className="flex items-start gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-[#fff5f2] dark:bg-[#ec4d25]/15 text-[#ec4d25] border border-[#ffdcd2] dark:border-[#ec4d25]/30 flex items-center justify-center flex-shrink-0">
                     <HiLocationMarker className="text-xl" />
                   </div>
                   <div>
@@ -163,7 +160,7 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-start gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-[#fff5f2] dark:bg-[#ec4d25]/15 text-[#ec4d25] border border-[#ffdcd2] dark:border-[#ec4d25]/30 flex items-center justify-center flex-shrink-0">
                     <HiMail className="text-xl" />
                   </div>
                   <div>
@@ -174,30 +171,30 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-start gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-[#fff5f2] dark:bg-[#ec4d25]/15 text-[#ec4d25] border border-[#ffdcd2] dark:border-[#ec4d25]/30 flex items-center justify-center flex-shrink-0">
                     <HiPhone className="text-xl" />
                   </div>
                   <div>
                     <strong className="block text-slate-900 dark:text-white font-bold">Helpline</strong>
                     <p>Mon - Sat (9:30 AM to 6:00 PM IST)</p>
-                    <p className="text-emerald-700 dark:text-emerald-400 font-bold">+91 98346 71803</p>
+                    <p className="text-[#ec4d25] dark:text-[#f78c72] font-bold">+91 98346 71803</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Registration Card */}
-            <div className="bg-gradient-to-br from-emerald-700 to-teal-700 rounded-2xl p-6 sm:p-8 text-white shadow-md space-y-3 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+            <div className="bg-slate-900 dark:bg-black border border-slate-800 rounded-2xl p-6 sm:p-8 text-white shadow-sm space-y-3 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
               <h4 className="text-lg font-bold flex items-center gap-2">
-                <HiCheckCircle className="text-emerald-300 text-2xl" />
+                <HiCheckCircle className="text-[#ec4d25] text-2xl" />
                 Government & FCRA Registered
               </h4>
-              <p className="text-xs text-emerald-100 leading-relaxed">
+              <p className="text-xs text-slate-400 leading-relaxed">
                 GTT Foundation is a certified non-profit registered under the Indian Societies Act with 12A, 80G tax-exempt status and valid CSR-1 certification.
               </p>
               <div className="flex flex-wrap gap-2 pt-2">
                 {['12A', '80G', 'CSR-1'].map((badge) => (
-                  <span key={badge} className="text-[10px] font-bold uppercase bg-white/15 px-3 py-1 rounded-lg border border-white/20">
+                  <span key={badge} className="text-[10px] font-bold uppercase bg-[#ec4d25]/15 text-[#f78c72] px-3 py-1 rounded-lg border border-[#ec4d25]/30">
                     {badge} Certified
                   </span>
                 ))}
@@ -208,7 +205,7 @@ export default function Contact() {
             <div className="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm animate-fade-in-up" style={{ animationDelay: '0.45s' }}>
               <div className="h-48 bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto mb-2">
+                  <div className="w-12 h-12 rounded-2xl bg-[#fff5f2] dark:bg-[#ec4d25]/15 text-[#ec4d25] border border-[#ffdcd2] dark:border-[#ec4d25]/30 flex items-center justify-center mx-auto mb-2">
                     <HiLocationMarker className="text-2xl" />
                   </div>
                   <p className="text-sm font-bold text-slate-700 dark:text-slate-300">Pune, Maharashtra</p>
@@ -224,7 +221,7 @@ export default function Contact() {
       <section className="py-16 bg-white dark:bg-slate-900 transition-colors">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <span className="text-xs font-black uppercase tracking-widest text-emerald-600 dark:text-emerald-400 bg-emerald-100/60 dark:bg-emerald-950/60 px-3 py-1 rounded-full">
+            <span className="text-xs font-black uppercase tracking-widest text-[#ec4d25] dark:text-[#f78c72] bg-[#fff5f2] dark:bg-[#ec4d25]/10 border border-[#ffdcd2] dark:border-[#ec4d25]/20 px-3.5 py-1.5 rounded-full">
               FAQ
             </span>
             <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
@@ -240,7 +237,7 @@ export default function Contact() {
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full text-left px-6 py-4 flex items-center justify-between gap-4 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+                  className="w-full text-left px-6 py-4 flex items-center justify-between gap-4 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
                 >
                   <span className="text-sm font-bold text-slate-900 dark:text-white">{faq.q}</span>
                   <HiChevronDown className={`text-slate-400 text-lg flex-shrink-0 transition-transform duration-300 ${openFaq === i ? 'rotate-180' : ''}`} />

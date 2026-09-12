@@ -175,7 +175,7 @@ VALUES
     '15,000 Rural Students',
     1500000,
     980000,
-    'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800',
+    'https://images.unsplash.com/photo-1692269725851-f5d3a3f02807?w=800&auto=format&fit=crop&q=80',
     'active',
     true
 ),
@@ -186,7 +186,7 @@ VALUES
     '25,000 Villagers',
     2000000,
     1450000,
-    'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?w=800',
+    'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&auto=format&fit=crop&q=80',
     'active',
     true
 ),
@@ -197,7 +197,7 @@ VALUES
     '1,200 Women Artisans',
     800000,
     620000,
-    'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800',
+    'https://images.unsplash.com/photo-1646578486121-67aed93c4f4e?w=800&auto=format&fit=crop&q=80',
     'active',
     true
 ),
@@ -208,7 +208,7 @@ VALUES
     '8 Gram Panchayats',
     1200000,
     890000,
-    'https://images.unsplash.com/photo-1541888946425-d0fbb1861593?w=800',
+    'https://images.unsplash.com/photo-1544984243-ec57ea16fe25?w=800&auto=format&fit=crop&q=80',
     'active',
     false
 )
@@ -226,7 +226,7 @@ VALUES
     'Healthcare',
     250,
     142,
-    'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?w=800',
+    'https://images.unsplash.com/photo-1659353888906-adb3e0041693?w=800&auto=format&fit=crop&q=80',
     'upcoming'
 ),
 (
@@ -238,7 +238,7 @@ VALUES
     'Education',
     400,
     285,
-    'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800',
+    'https://images.unsplash.com/photo-1562789233-495f52b583dd?w=800&auto=format&fit=crop&q=80',
     'upcoming'
 ),
 (
@@ -250,7 +250,7 @@ VALUES
     'Livelihoods',
     600,
     340,
-    'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800',
+    'https://images.unsplash.com/photo-1698768195616-2d49cb36477f?w=800&auto=format&fit=crop&q=80',
     'upcoming'
 )
 ON CONFLICT DO NOTHING;
@@ -265,7 +265,7 @@ VALUES
     'Before solar smart boards, frequent 8-hour power cuts halted learning. Today, students attend digital sessions and achieve 94% board exam pass rates.',
     'Education is the bedrock of societal transformation. When our ground team first visited the remote talukas of Shirur, school attendance had dipped below 60% due to erratic power grids and dilapidated learning resources.\n\nThrough community partnership and generous corporate patrons, we installed rooftop solar micro-grids and modern interactive touch-displays. The results have been extraordinary: school enrollment has jumped by 38%, and mathematics proficiency has doubled across 20 participating village schools.',
     'Dr. Meera Kulkarni',
-    'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800',
+    'https://images.unsplash.com/photo-1692269725911-87697c558be1?w=800&auto=format&fit=crop&q=80',
     true
 ),
 (
@@ -275,7 +275,7 @@ VALUES
     'With a micro-grant of ₹25,000 and 3 months of textile training, Sunita built an artisan cooperative employing 18 women in her village.',
     'Financial independence changes how a woman is heard in her community. Sunita Bai spent fifteen years working on seasonal agricultural contracts with zero economic security.\n\nAfter enrolling in our 90-day tailoring and business management curriculum, she took a zero-interest micro loan to procure three commercial sewing machines. Today, her cooperative supplies uniform fabric to five district schools, earning a steady monthly profit that funds her children''s college tuition.',
     'Rajesh Deshmukh',
-    'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800',
+    'https://images.unsplash.com/photo-1626523445530-804c4745be94?w=800&auto=format&fit=crop&q=80',
     true
 )
 ON CONFLICT (slug) DO NOTHING;

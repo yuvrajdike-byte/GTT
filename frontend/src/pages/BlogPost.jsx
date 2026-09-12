@@ -45,7 +45,7 @@ export default function BlogPost() {
   if (loading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-950 gap-4">
-        <div className="w-12 h-12 border-4 border-emerald-600 border-t-transparent rounded-full animate-spin" />
+        <div className="w-12 h-12 border-4 border-[#ec4d25] border-t-transparent rounded-full animate-spin" />
         <p className="text-sm font-semibold text-slate-500 dark:text-slate-400">Loading article...</p>
       </div>
     );
@@ -59,7 +59,7 @@ export default function BlogPost() {
         </div>
         <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">Article Not Found</h2>
         <p className="text-slate-500 dark:text-slate-400 mb-6">The story you're looking for might have been moved or updated.</p>
-        <Link to="/blog" className="inline-flex items-center gap-2 bg-emerald-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-emerald-700 transition">
+        <Link to="/blog" className="inline-flex items-center gap-2 bg-[#ec4d25] hover:bg-[#d73e16] text-white font-bold px-6 py-3 rounded-xl transition">
           <HiArrowLeft /> Back to Impact Journal
         </Link>
       </div>
@@ -69,9 +69,9 @@ export default function BlogPost() {
   return (
     <div className="bg-white dark:bg-slate-950 min-h-screen pb-20 transition-colors">
       {/* Top Nav */}
-      <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-30 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 transition-colors">
+      <div className="bg-white/90 dark:bg-slate-900/90 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-30 backdrop-blur-md transition-colors">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
-          <Link to="/blog" className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-emerald-400 transition">
+          <Link to="/blog" className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-[#ec4d25] dark:hover:text-[#f78c72] transition">
             <HiArrowLeft /> All Articles
           </Link>
           <div className="flex items-center gap-2">
@@ -100,7 +100,7 @@ export default function BlogPost() {
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 animate-fade-in-up">
         {/* Header */}
         <div className="mb-8">
-          <span className="bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+          <span className="bg-[#fff5f2] dark:bg-[#ec4d25]/15 text-[#ec4d25] dark:text-[#f78c72] border border-[#ffdcd2] dark:border-[#ec4d25]/30 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
             {blog.category || 'Impact Story'}
           </span>
 
@@ -116,31 +116,33 @@ export default function BlogPost() {
 
           <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-500 dark:text-slate-400 mt-6 pt-6 border-t border-slate-100 dark:border-slate-800">
             <span className="flex items-center gap-1.5">
-              <HiUser className="text-emerald-600 dark:text-emerald-400 text-base" />
+              <HiUser className="text-[#ec4d25] text-base" />
               By {blog.author_name || 'GTT Editorial Team'}
             </span>
             <span>•</span>
             <span className="flex items-center gap-1.5">
-              <HiCalendar className="text-emerald-600 dark:text-emerald-400 text-base" />
+              <HiCalendar className="text-[#ec4d25] text-base" />
               {blog.created_at ? new Date(blog.created_at).toLocaleDateString('en-IN', { month: 'long', day: 'numeric', year: 'numeric' }) : 'Recent'}
             </span>
             <span>•</span>
             <span className="flex items-center gap-1.5">
-              <HiClock className="text-emerald-600 dark:text-emerald-400 text-base" />
+              <HiClock className="text-[#ec4d25] text-base" />
               {readTime} min read
             </span>
           </div>
         </div>
 
         {/* Hero Image */}
-        {blog.image_url && (
-          <div className="rounded-2xl overflow-hidden shadow-lg dark:shadow-black/30 mb-12 border border-slate-100 dark:border-slate-800">
-            <img src={blog.image_url} alt={blog.title} className="w-full h-80 sm:h-[450px] object-cover" />
-          </div>
-        )}
+        <div className="rounded-2xl overflow-hidden shadow-md dark:shadow-black/30 mb-12 border border-slate-100 dark:border-slate-800">
+          <img
+            src={blog.image_url || 'https://images.unsplash.com/photo-1692269725911-87697c558be1?w=800&auto=format&fit=crop&q=80'}
+            alt={blog.title}
+            className="w-full h-80 sm:h-[450px] object-cover"
+          />
+        </div>
 
         {/* Content */}
-        <div className="prose prose-emerald prose-lg max-w-none text-slate-700 dark:text-slate-300 leading-relaxed space-y-6 text-base sm:text-lg whitespace-pre-line">
+        <div className="max-w-none text-slate-700 dark:text-slate-300 leading-relaxed space-y-6 text-base sm:text-lg whitespace-pre-line">
           {blog.content}
         </div>
 
@@ -148,23 +150,23 @@ export default function BlogPost() {
         <div className="mt-12 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center gap-3">
           <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Tags:</span>
           {['GTT Foundation', blog.category || 'Impact', 'Community Development'].map((tag) => (
-            <span key={tag} className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-1 rounded-full">
+            <span key={tag} className="text-xs font-semibold text-[#ec4d25] dark:text-[#f78c72] bg-[#fff5f2] dark:bg-[#ec4d25]/15 border border-[#ffdcd2] dark:border-[#ec4d25]/30 px-3 py-1 rounded-full">
               {tag}
             </span>
           ))}
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-12 p-8 sm:p-10 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl text-white text-center space-y-4 shadow-lg">
+        <div className="mt-12 p-8 sm:p-10 bg-[#ec4d25] rounded-2xl text-white text-center space-y-4 shadow-sm">
           <h3 className="text-2xl font-bold">Inspired by this story?</h3>
-          <p className="text-sm text-emerald-100 max-w-xl mx-auto">
+          <p className="text-sm text-white/90 max-w-xl mx-auto">
             Your contributions enable us to replicate these programs and impact more lives.
           </p>
           <div className="flex flex-wrap gap-3 justify-center pt-2">
-            <Link to="/donate" className="bg-white text-slate-900 font-extrabold px-6 py-3 rounded-xl text-sm shadow-xl hover:bg-slate-100 hover:scale-105 active:scale-[0.98] transition-all flex items-center gap-2">
+            <Link to="/donate" className="bg-white text-[#ec4d25] font-extrabold px-6 py-3 rounded-xl text-sm shadow-sm hover:bg-slate-50 active:scale-[0.98] transition-all flex items-center gap-2">
               Support This Program <HiArrowRight />
             </Link>
-            <Link to="/volunteer" className="bg-emerald-800/60 hover:bg-emerald-800/80 border border-emerald-400/40 text-white font-bold px-6 py-3 rounded-xl text-sm transition">
+            <Link to="/volunteer" className="bg-transparent hover:bg-white/10 border-2 border-white text-white font-bold px-6 py-3 rounded-xl text-sm transition">
               Volunteer With Us
             </Link>
           </div>

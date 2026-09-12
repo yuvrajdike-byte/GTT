@@ -78,30 +78,26 @@ export default function Volunteer() {
 
   return (
     <div className="bg-slate-50 dark:bg-slate-950 min-h-screen pb-20 transition-colors">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 text-white py-24 sm:py-28">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-1/4 w-80 h-80 bg-emerald-400 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s' }} />
-          <div className="absolute bottom-10 right-1/4 w-72 h-72 bg-teal-400 rounded-full blur-3xl" />
-        </div>
+      {/* Hero Section — Clean Slate, Zero Glow Blobs */}
+      <section className="relative overflow-hidden bg-slate-900 text-white py-24 sm:py-28 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            <span className="text-xs font-black uppercase tracking-widest text-emerald-400 bg-emerald-900/60 px-4 py-1.5 rounded-full border border-emerald-500/30 backdrop-blur-sm flex items-center gap-2 w-fit">
-              <HiSparkles /> Become a Changemaker
+            <span className="text-xs font-black uppercase tracking-widest text-[#f78c72] bg-[#ec4d25]/15 px-4 py-1.5 rounded-full border border-[#ec4d25]/30 backdrop-blur-sm flex items-center gap-2 w-fit">
+              <HiSparkles className="text-[#ec4d25]" /> Become a Changemaker
             </span>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black mt-6 tracking-tight leading-tight">
               Volunteer with{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
+              <span className="text-[#ec4d25]">
                 GTT Foundation
               </span>
             </h1>
-            <p className="text-emerald-100/80 text-lg sm:text-xl max-w-3xl mt-6 leading-relaxed">
+            <p className="text-slate-300 text-lg sm:text-xl max-w-3xl mt-6 leading-relaxed">
               Lend your skills, time, and heart to empower youth. Make a tangible difference on the ground or remotely.
             </p>
             <div className="flex flex-wrap items-center gap-6 mt-8 text-sm">
               {['500+ Active Volunteers', 'Flexible Hours', 'Certificate Provided'].map((text) => (
-                <div key={text} className="flex items-center gap-2 text-emerald-300">
-                  <HiCheckCircle className="text-lg" />
+                <div key={text} className="flex items-center gap-2 text-slate-300">
+                  <HiCheckCircle className="text-lg text-[#ec4d25]" />
                   <span className="font-semibold">{text}</span>
                 </div>
               ))}
@@ -116,10 +112,10 @@ export default function Volunteer() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map((b, i) => (
               <div key={b.title} className="text-center group animate-fade-in-up" style={{ animationDelay: `${i * 100}ms` }}>
-                <div className="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform shadow-sm">
+                <div className="w-12 h-12 rounded-xl bg-[#fff5f2] dark:bg-[#ec4d25]/15 text-[#ec4d25] border border-[#ffdcd2] dark:border-[#ec4d25]/30 flex items-center justify-center mx-auto mb-3 group-hover:scale-105 transition-transform shadow-sm">
                   <b.Icon className="text-2xl" />
                 </div>
-                <h3 className="font-bold text-slate-900 dark:text-white text-sm mb-1 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition">{b.title}</h3>
+                <h3 className="font-bold text-slate-900 dark:text-white text-sm mb-1 group-hover:text-[#ec4d25] transition-colors">{b.title}</h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{b.desc}</p>
               </div>
             ))}
@@ -130,8 +126,8 @@ export default function Volunteer() {
       {/* Main Form */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {submitted ? (
-          <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 sm:p-12 shadow-xl dark:shadow-black/30 border border-emerald-200 dark:border-emerald-900 text-center space-y-6 transition-colors animate-scale-up">
-            <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-500 text-white rounded-2xl flex items-center justify-center mx-auto text-4xl shadow-lg shadow-emerald-500/20">
+          <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 sm:p-12 shadow-xl dark:shadow-black/30 border border-slate-200/80 dark:border-slate-800 text-center space-y-6 transition-colors animate-scale-up">
+            <div className="w-20 h-20 bg-[#ec4d25] text-white rounded-2xl flex items-center justify-center mx-auto text-4xl shadow-sm">
               <HiCheckCircle className="text-4xl text-white" />
             </div>
             <h2 className="text-3xl font-black text-slate-900 dark:text-white">Application Received!</h2>
@@ -144,7 +140,7 @@ export default function Volunteer() {
                 setForm({ full_name: '', email: '', phone: '', skills: '', availability: 'Weekends (4-8 hours/week)', interest_area: areas[0].name, message: '' });
                 setSelectedArea(areas[0].name);
               }}
-              className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold px-8 py-3 rounded-xl text-sm transition shadow-md cursor-pointer"
+              className="bg-[#ec4d25] hover:bg-[#d73e16] active:bg-[#b8310e] text-white font-extrabold px-8 py-3 rounded-xl text-sm transition shadow-sm cursor-pointer"
             >
               Submit Another Application
             </button>
@@ -152,7 +148,7 @@ export default function Volunteer() {
         ) : (
           <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 shadow-xl dark:shadow-black/30 border border-slate-200/80 dark:border-slate-800 transition-colors animate-fade-in-up">
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 text-white flex items-center justify-center shadow-md">
+              <div className="w-12 h-12 rounded-xl bg-[#ec4d25] text-white flex items-center justify-center shadow-sm">
                 <HiUserGroup className="text-xl" />
               </div>
               <div>
@@ -176,16 +172,16 @@ export default function Volunteer() {
                         key={a.name}
                         type="button"
                         onClick={() => setSelectedArea(a.name)}
-                        className={`text-left p-4 rounded-xl border transition-all duration-300 cursor-pointer ${
+                        className={`text-left p-4 rounded-xl border transition-all cursor-pointer ${
                           isSelected
-                            ? 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-500 shadow-sm'
+                            ? 'bg-[#fff5f2] dark:bg-[#ec4d25]/15 border-[#ec4d25] shadow-sm'
                             : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700'
                         }`}
                       >
-                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2.5 ${isSelected ? 'bg-emerald-500 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300'}`}>
+                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2.5 ${isSelected ? 'bg-[#ec4d25] text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300'}`}>
                           <AreaIcon className="text-lg" />
                         </div>
-                        <p className={`text-xs font-bold ${isSelected ? 'text-emerald-700 dark:text-emerald-400' : 'text-slate-700 dark:text-slate-300'}`}>
+                        <p className={`text-xs font-bold ${isSelected ? 'text-[#ec4d25] dark:text-[#f78c72]' : 'text-slate-700 dark:text-slate-300'}`}>
                           {a.name}
                         </p>
                         <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">{a.desc}</p>
@@ -205,13 +201,13 @@ export default function Volunteer() {
                     <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1">Full Name *</label>
                     <input type="text" required placeholder="e.g. Maya Iyer"
                       value={form.full_name} onChange={(e) => setForm({ ...form, full_name: e.target.value })}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#ec4d25]" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1">Email *</label>
                     <input type="email" required placeholder="maya@example.com"
                       value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#ec4d25]" />
                   </div>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-4 mt-4">
@@ -219,13 +215,13 @@ export default function Volunteer() {
                     <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1">Phone *</label>
                     <input type="tel" required placeholder="+91 98765 43210"
                       value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#ec4d25]" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1">Skills & Domain Expertise</label>
                     <input type="text" placeholder="e.g. Python, Soft Skills, Sales, HR"
                       value={form.skills} onChange={(e) => setForm({ ...form, skills: e.target.value })}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#ec4d25]" />
                   </div>
                 </div>
               </div>
@@ -243,7 +239,7 @@ export default function Volunteer() {
                       onClick={() => setForm({ ...form, availability: opt })}
                       className={`p-3 rounded-xl text-xs font-bold text-left border transition-all cursor-pointer ${
                         form.availability === opt
-                          ? 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-500 text-emerald-700 dark:text-emerald-400 shadow-sm'
+                          ? 'bg-[#fff5f2] dark:bg-[#ec4d25]/15 border-[#ec4d25] text-[#ec4d25] dark:text-[#f78c72] shadow-sm'
                           : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700'
                       }`}
                     >
@@ -263,7 +259,7 @@ export default function Volunteer() {
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   placeholder="Tell us a little about your motivation, experience, or what you hope to achieve..."
-                  className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#ec4d25]"
                 />
               </div>
 
@@ -272,9 +268,9 @@ export default function Volunteer() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold py-4 rounded-2xl text-base shadow-lg shadow-emerald-600/25 transition disabled:opacity-50 flex items-center justify-center gap-2 active:scale-[0.98] cursor-pointer"
+                  className="w-full bg-[#ec4d25] hover:bg-[#d73e16] active:bg-[#b8310e] text-white font-extrabold py-4 rounded-2xl text-base shadow-sm transition disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <HiHeart className="text-rose-300 text-lg" />
+                  <HiHeart className="text-white text-lg" />
                   {submitting ? 'Submitting Application...' : 'Submit Volunteer Application'}
                   <HiArrowRight />
                 </button>

@@ -95,22 +95,18 @@ export default function Donate() {
 
   return (
     <div className="bg-slate-50 dark:bg-slate-950 min-h-screen pb-20 transition-colors">
-      {/* Header */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 text-white py-24 sm:py-28">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-20 w-72 h-72 bg-emerald-400 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '5s' }} />
-          <div className="absolute bottom-10 right-20 w-64 h-64 bg-teal-400 rounded-full blur-3xl" />
-        </div>
+      {/* Header — Clean Deep Slate, Zero Glow Blobs */}
+      <section className="relative overflow-hidden bg-slate-900 text-white py-24 sm:py-28 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl">
-            <span className="text-xs font-black uppercase tracking-widest text-emerald-400 bg-emerald-900/60 px-4 py-1.5 rounded-full border border-emerald-500/30 backdrop-blur-sm flex items-center gap-2 w-fit">
-              <HiShieldCheck className="text-base" /> 100% Tax Exempt Under 80G
+            <span className="text-xs font-black uppercase tracking-widest text-[#f78c72] bg-[#ec4d25]/15 px-4 py-1.5 rounded-full border border-[#ec4d25]/30 backdrop-blur-sm flex items-center gap-2 w-fit">
+              <HiShieldCheck className="text-base text-[#ec4d25]" /> 100% Tax Exempt Under 80G
             </span>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black mt-6 tracking-tight leading-tight">
               Invest in a Youth's{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">Future Career</span>
+              <span className="text-[#ec4d25]">Future Career</span>
             </h1>
-            <p className="text-emerald-100/80 text-lg sm:text-xl max-w-3xl mt-6 leading-relaxed">
+            <p className="text-slate-300 text-lg sm:text-xl max-w-3xl mt-6 leading-relaxed">
               Every contribution directly funds skilling programs, professional training, and placement support 
               for underserved youth — with complete transparency.
             </p>
@@ -121,16 +117,16 @@ export default function Donate() {
       {/* Main Container */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20">
         {donatedReceipt ? (
-          <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 sm:p-12 shadow-xl dark:shadow-black/30 border border-emerald-200 dark:border-emerald-900 text-center space-y-6 transition-colors animate-scale-up">
-            <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-500 text-white rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-emerald-500/20">
+          <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 sm:p-12 shadow-xl dark:shadow-black/30 border border-slate-200/80 dark:border-slate-800 text-center space-y-6 transition-colors animate-scale-up">
+            <div className="w-20 h-20 bg-[#ec4d25] text-white rounded-2xl flex items-center justify-center mx-auto shadow-sm">
               <HiHeart className="text-4xl" />
             </div>
             <h2 className="text-3xl font-black text-slate-900 dark:text-white">Thank You For Your Support!</h2>
             <p className="text-slate-600 dark:text-slate-400 text-sm max-w-lg mx-auto">
-              Your contribution of <strong className="text-emerald-700 dark:text-emerald-400 font-extrabold">₹{donatedReceipt.amount.toLocaleString()}</strong> has been recorded under transaction ID: <code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-slate-800 dark:text-slate-200">{donatedReceipt.transaction_id}</code>.
+              Your contribution of <strong className="text-[#ec4d25] dark:text-[#f78c72] font-extrabold">₹{donatedReceipt.amount.toLocaleString()}</strong> has been recorded under transaction ID: <code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-slate-800 dark:text-slate-200">{donatedReceipt.transaction_id}</code>.
             </p>
 
-            <div className="bg-emerald-50 dark:bg-emerald-950/40 p-6 rounded-2xl border border-emerald-100 dark:border-emerald-900 max-w-md mx-auto text-left text-xs space-y-2 text-slate-700 dark:text-slate-300">
+            <div className="bg-[#fff5f2] dark:bg-[#ec4d25]/10 p-6 rounded-2xl border border-[#ffdcd2] dark:border-[#ec4d25]/30 max-w-md mx-auto text-left text-xs space-y-2 text-slate-700 dark:text-slate-300">
               <p><strong>Donor:</strong> {donatedReceipt.donor_name}</p>
               <p><strong>Email:</strong> {donatedReceipt.email}</p>
               <p><strong>Impact Allocation:</strong> {cause}</p>
@@ -139,7 +135,7 @@ export default function Donate() {
 
             <button
               onClick={() => { setDonatedReceipt(null); setCustomAmount(''); setDonorName(''); setEmail(''); }}
-              className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold px-8 py-3 rounded-xl text-sm transition shadow-md cursor-pointer"
+              className="bg-[#ec4d25] hover:bg-[#d73e16] active:bg-[#b8310e] text-white font-extrabold px-8 py-3 rounded-xl text-sm transition shadow-sm cursor-pointer"
             >
               Make Another Donation
             </button>
@@ -156,12 +152,12 @@ export default function Donate() {
                   </label>
                   <div className="grid grid-cols-2 gap-3">
                     <button type="button" onClick={() => setFrequency('one-time')}
-                      className={`py-3 rounded-xl text-sm font-bold transition cursor-pointer ${frequency === 'one-time' ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/20' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
+                      className={`py-3 rounded-xl text-sm font-bold transition cursor-pointer ${frequency === 'one-time' ? 'bg-[#ec4d25] text-white shadow-sm' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
                       One-Time Gift
                     </button>
                     <button type="button" onClick={() => setFrequency('monthly')}
-                      className={`py-3 rounded-xl text-sm font-bold transition flex items-center justify-center gap-1.5 cursor-pointer ${frequency === 'monthly' ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/20' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
-                      <HiHeart className="text-rose-400" /> Monthly Champion
+                      className={`py-3 rounded-xl text-sm font-bold transition flex items-center justify-center gap-1.5 cursor-pointer ${frequency === 'monthly' ? 'bg-[#ec4d25] text-white shadow-sm' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
+                      <HiHeart className="text-white" /> Monthly Champion
                     </button>
                   </div>
                 </div>
@@ -175,7 +171,7 @@ export default function Donate() {
                     {presetAmounts.map((amt) => (
                       <button key={amt} type="button"
                         onClick={() => { setAmount(String(amt)); setCustomAmount(''); }}
-                        className={`py-3 rounded-xl text-sm font-extrabold transition border cursor-pointer ${amount === String(amt) && !customAmount ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border-emerald-500 shadow-sm' : 'bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700'}`}>
+                        className={`py-3 rounded-xl text-sm font-extrabold transition border cursor-pointer ${amount === String(amt) && !customAmount ? 'bg-[#fff5f2] dark:bg-[#ec4d25]/15 text-[#ec4d25] dark:text-[#f78c72] border-[#ec4d25] shadow-sm' : 'bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700'}`}>
                         ₹{amt >= 1000 ? `${amt / 1000}K` : amt}
                       </button>
                     ))}
@@ -185,7 +181,7 @@ export default function Donate() {
                     <input type="number" min="100" placeholder="Or enter custom amount"
                       value={customAmount}
                       onChange={(e) => { setCustomAmount(e.target.value); setAmount(''); }}
-                      className="w-full pl-8 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                      className="w-full pl-8 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#ec4d25]"
                     />
                   </div>
                 </div>
@@ -201,8 +197,8 @@ export default function Donate() {
                       const isSelected = cause === c.name;
                       return (
                         <button key={c.name} type="button" onClick={() => setCause(c.name)}
-                          className={`text-left p-3 rounded-xl text-xs font-semibold transition border flex items-center gap-2.5 cursor-pointer ${isSelected ? 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-500 text-emerald-700 dark:text-emerald-400 shadow-sm' : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'}`}>
-                          <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${isSelected ? 'bg-emerald-500 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300'}`}>
+                          className={`text-left p-3 rounded-xl text-xs font-semibold transition border flex items-center gap-2.5 cursor-pointer ${isSelected ? 'bg-[#fff5f2] dark:bg-[#ec4d25]/15 border-[#ec4d25] text-[#ec4d25] dark:text-[#f78c72] shadow-sm' : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'}`}>
+                          <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${isSelected ? 'bg-[#ec4d25] text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300'}`}>
                             <IconComp className="text-base" />
                           </div>
                           <span>{c.name}</span>
@@ -222,13 +218,13 @@ export default function Donate() {
                       <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1">Full Name *</label>
                       <input type="text" required placeholder="e.g. Vikram Singhania"
                         value={donorName} onChange={(e) => setDonorName(e.target.value)}
-                        className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+                        className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#ec4d25]" />
                     </div>
                     <div>
                       <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1">Email *</label>
                       <input type="email" required placeholder="vikram@example.com"
                         value={email} onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+                        className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#ec4d25]" />
                     </div>
                   </div>
                   <div className="grid sm:grid-cols-2 gap-4">
@@ -236,18 +232,18 @@ export default function Donate() {
                       <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1">Phone</label>
                       <input type="tel" placeholder="+91 98765 43210"
                         value={phone} onChange={(e) => setPhone(e.target.value)}
-                        className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+                        className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#ec4d25]" />
                     </div>
                     <div>
                       <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1">PAN (For 80G)</label>
                       <input type="text" placeholder="ABCDE1234F"
                         value={pan} onChange={(e) => setPan(e.target.value.toUpperCase())}
-                        className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm uppercase focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+                        className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl text-sm uppercase focus:outline-none focus:ring-2 focus:ring-[#ec4d25]" />
                     </div>
                   </div>
                   <div className="flex items-center gap-2 pt-2">
                     <input type="checkbox" id="anon" checked={isAnonymous} onChange={(e) => setIsAnonymous(e.target.checked)}
-                      className="w-4 h-4 text-emerald-600 rounded border-slate-300 dark:border-slate-700 focus:ring-emerald-500" />
+                      className="w-4 h-4 text-[#ec4d25] rounded border-slate-300 dark:border-slate-700 focus:ring-[#ec4d25]" />
                     <label htmlFor="anon" className="text-xs text-slate-600 dark:text-slate-400 font-medium cursor-pointer">
                       Make this donation anonymous
                     </label>
@@ -257,12 +253,12 @@ export default function Donate() {
                 {/* Submit */}
                 <div className="space-y-3 pt-4 border-t border-slate-100 dark:border-slate-800">
                   <button type="submit" disabled={submitting}
-                    className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold py-4 rounded-2xl text-base shadow-lg shadow-emerald-600/25 transition disabled:opacity-50 flex items-center justify-center gap-2 active:scale-[0.98] cursor-pointer">
-                    <HiLockClosed className="text-emerald-200 text-lg" />
+                    className="w-full bg-[#ec4d25] hover:bg-[#d73e16] active:bg-[#b8310e] text-white font-extrabold py-4 rounded-2xl text-base shadow-sm transition disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer">
+                    <HiLockClosed className="text-white text-lg" />
                     {submitting ? 'Processing...' : `Complete Donation of ₹${selectedAmount ? selectedAmount.toLocaleString() : '0'}`}
                   </button>
                   <div className="flex items-center justify-center gap-4 text-xs text-slate-400 pt-2">
-                    <span className="flex items-center gap-1"><HiShieldCheck className="text-emerald-600 text-base" /> 256-Bit SSL</span>
+                    <span className="flex items-center gap-1"><HiShieldCheck className="text-[#ec4d25] text-base" /> 256-Bit SSL</span>
                     <span>•</span>
                     <span>Instant 80G Receipt</span>
                     <span>•</span>
@@ -277,11 +273,11 @@ export default function Donate() {
               {/* Impact Calculator */}
               <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm">
                 <div className="flex items-center gap-2 mb-4">
-                  <HiLightBulb className="text-amber-500 text-xl" />
+                  <HiLightBulb className="text-[#ec4d25] text-xl" />
                   <h3 className="font-bold text-slate-900 dark:text-white text-sm">Your Impact</h3>
                 </div>
-                <div className="bg-emerald-50 dark:bg-emerald-950/40 rounded-xl p-4 border border-emerald-100 dark:border-emerald-900">
-                  <p className="text-2xl font-black text-emerald-600 dark:text-emerald-400">
+                <div className="bg-[#fff5f2] dark:bg-[#ec4d25]/10 rounded-xl p-4 border border-[#ffdcd2] dark:border-[#ec4d25]/30">
+                  <p className="text-2xl font-black text-[#ec4d25] dark:text-[#f78c72]">
                     ₹{selectedAmount ? selectedAmount.toLocaleString() : '0'}
                   </p>
                   <p className="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
@@ -293,12 +289,12 @@ export default function Donate() {
               {/* Impact breakdown */}
               <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm">
                 <h3 className="font-bold text-slate-900 dark:text-white text-sm mb-4 flex items-center gap-2">
-                  <HiSparkles className="text-emerald-500" /> What Your Donation Funds
+                  <HiSparkles className="text-[#ec4d25]" /> What Your Donation Funds
                 </h3>
                 <div className="space-y-3">
                   {impactExamples.slice(0, 4).map((ex) => (
                     <div key={ex.amount} className="flex items-start gap-3 text-xs">
-                      <span className="font-extrabold text-emerald-600 dark:text-emerald-400 min-w-[50px]">
+                      <span className="font-extrabold text-[#ec4d25] dark:text-[#f78c72] min-w-[50px]">
                         ₹{ex.amount >= 1000 ? `${ex.amount / 1000}K` : ex.amount}
                       </span>
                       <span className="text-slate-600 dark:text-slate-400">{ex.impact}</span>
@@ -308,11 +304,11 @@ export default function Donate() {
               </div>
 
               {/* Donor testimonial */}
-              <div className="bg-gradient-to-br from-emerald-700 to-teal-700 rounded-2xl p-6 text-white shadow-md">
-                <p className="text-xs text-emerald-100/90 italic leading-relaxed">
+              <div className="bg-slate-900 dark:bg-black rounded-2xl p-6 text-white border border-slate-800 shadow-sm">
+                <p className="text-xs text-slate-300 italic leading-relaxed">
                   "Knowing exactly how my ₹10,000 was spent — training 2 youth in IT skills who both got placed — that transparency keeps me donating every month."
                 </p>
-                <p className="text-[11px] text-emerald-300 font-semibold mt-3">— Monthly Patron, Pune</p>
+                <p className="text-[11px] text-[#f78c72] font-semibold mt-3">— Monthly Patron, Pune</p>
               </div>
 
               {/* Trust badges */}
@@ -325,7 +321,7 @@ export default function Donate() {
                     'Independent annual financial audits',
                   ].map((point) => (
                     <div key={point} className="flex items-start gap-2 text-xs">
-                      <HiCheckCircle className="text-emerald-500 text-base flex-shrink-0 mt-0.5" />
+                      <HiCheckCircle className="text-[#ec4d25] text-base flex-shrink-0 mt-0.5" />
                       <span className="text-slate-600 dark:text-slate-400 font-medium">{point}</span>
                     </div>
                   ))}

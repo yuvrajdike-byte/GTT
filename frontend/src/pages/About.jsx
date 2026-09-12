@@ -1,78 +1,73 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   HiSparkles,
-  HiUserGroup,
   HiGlobeAlt,
-  HiLightBulb,
-  HiUser,
   HiAcademicCap,
   HiBriefcase,
   HiClipboardCheck,
-  HiArrowRight
+  HiArrowRight,
+  HiHeart,
+  HiShieldCheck,
+  HiScale,
+  HiUserGroup,
 } from 'react-icons/hi';
-import { Link } from 'react-router-dom';
+
+const milestones = [
+  { year: '2018', event: 'GTT Foundation registered as a dedicated non-profit entity in Pune.' },
+  { year: '2020', event: 'Launched digital skilling initiatives during the pandemic, reaching 10,000+ youth remotely.' },
+  { year: '2022', event: 'Crossed 15,000 placements across IT, retail, BFSI, and manufacturing sectors.' },
+  { year: '2024', event: 'Expanded Bridge 4 Bharat rural livelihood programs across 5 states.' },
+  { year: '2026', event: 'Targeting 100,000 empowered youth with expanded CSR partnerships.' },
+];
 
 const values = [
   {
-    Icon: HiSparkles,
-    title: 'Impact-Driven Execution',
-    desc: 'Every program is measured against clear KPIs — placement rates, income growth, and beneficiary satisfaction scores.'
+    title: 'Empathy First',
+    desc: 'Understanding the lived realities of underserved youth and crafting pathways that respect their aspirations.',
+    Icon: HiHeart,
   },
   {
-    Icon: HiUserGroup,
-    title: 'Industry Partnerships',
-    desc: 'Deep collaborations with 200+ corporates, ensuring our curriculum matches real market demands and job requirements.'
+    title: 'Excellence in Training',
+    desc: 'Delivering world-class, industry-certified curricula through expert trainers and practical workshops.',
+    Icon: HiAcademicCap,
   },
   {
-    Icon: HiGlobeAlt,
-    title: 'Inclusive & Dignified',
-    desc: 'Equitable access to skilling, training, and placement irrespective of gender, caste, or socio-economic background.'
+    title: 'Uncompromised Integrity',
+    desc: '100% transparency in fund utilization, audited metrics, and open reporting to donors and stakeholders.',
+    Icon: HiShieldCheck,
   },
   {
-    Icon: HiLightBulb,
-    title: 'Innovation & Technology',
-    desc: 'Leveraging digital platforms, online learning, and data analytics to scale impact and reach underserved communities.'
-  }
-];
-
-const milestones = [
-  { year: '2014', event: 'GTT Foundation established in Pune with a mission to empower underserved youth' },
-  { year: '2016', event: 'Launched first Skilling for Employment program — 500 youth trained in IT & retail' },
-  { year: '2018', event: 'Bridge 4 Bharat digital initiative launched across tier-2 and tier-3 cities' },
-  { year: '2020', event: 'Pivoted to hybrid training model during COVID — 3,000+ trained remotely' },
-  { year: '2022', event: 'Crossed 200+ corporate partners milestone — 4,500+ placements achieved' },
-  { year: '2024', event: '25,000+ lives impacted across Maharashtra — expanded to Mumbai & Nagpur' },
-  { year: '2026', event: 'Digital-first career support platform launched with AI-powered mentoring' },
+    title: 'Equity & Inclusion',
+    desc: 'Ensuring affirmative action for women, rural youth, and historically disadvantaged communities.',
+    Icon: HiScale,
+  },
 ];
 
 const team = [
-  { name: 'Founding Director', role: 'Strategic Vision & Governance', Icon: HiUser },
+  { name: 'Dr. Ganesh Natarajan', role: 'Founder & Trustee', Icon: HiUserGroup },
+  { name: 'Dr. Uma Ganesh', role: 'Trustee & Educationalist', Icon: HiAcademicCap },
   { name: 'Head of Skilling', role: 'Curriculum Design & Trainer Development', Icon: HiAcademicCap },
   { name: 'Head of Placements', role: 'Corporate Partnerships & Hiring', Icon: HiBriefcase },
-  { name: 'Operations Lead', role: 'Center Management & Outreach', Icon: HiClipboardCheck },
 ];
 
 export default function About() {
   return (
     <div className="bg-slate-50 dark:bg-slate-950 min-h-screen transition-colors">
-      {/* Header Banner */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 text-white py-24 sm:py-28">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 right-20 w-80 h-80 bg-emerald-400 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 left-10 w-64 h-64 bg-teal-400 rounded-full blur-3xl" />
-        </div>
+      {/* Header Banner — Clean Deep Slate, No Glowing Orbs */}
+      <section className="relative overflow-hidden bg-slate-900 text-white py-24 sm:py-28 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl">
-            <span className="text-xs font-black uppercase tracking-widest text-emerald-400 bg-emerald-900/60 px-4 py-1.5 rounded-full border border-emerald-500/30 backdrop-blur-sm">
+            <span className="text-xs font-black uppercase tracking-widest text-[#f78c72] bg-[#ec4d25]/15 px-4 py-1.5 rounded-full border border-[#ec4d25]/30">
               About Our Organization
             </span>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black mt-6 tracking-tight leading-tight">
               Empowering Youth Through{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
+              <span className="text-[#ec4d25]">
                 Skills & Opportunities
               </span>
             </h1>
-            <p className="text-emerald-100/80 text-lg sm:text-xl max-w-3xl mt-6 leading-relaxed">
+            <p className="text-slate-300 text-lg sm:text-xl max-w-3xl mt-6 leading-relaxed">
               GTT Foundation is a registered non-profit organization dedicated to creating sustainable livelihoods 
               for underprivileged youth, women, and marginalized communities across India.
             </p>
@@ -84,7 +79,7 @@ export default function About() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20">
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 sm:p-10 shadow-xl dark:shadow-black/30 border border-slate-200/80 dark:border-slate-800 transition-colors animate-fade-in-up">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-6">
+            <div className="w-12 h-12 rounded-2xl bg-[#fff5f2] dark:bg-[#ec4d25]/15 text-[#ec4d25] border border-[#ffdcd2] dark:border-[#ec4d25]/30 flex items-center justify-center mb-6">
               <HiSparkles className="text-2xl" />
             </div>
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Our Vision</h2>
@@ -94,8 +89,8 @@ export default function About() {
             </p>
           </div>
 
-          <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 sm:p-10 shadow-xl dark:shadow-black/30 border border-slate-200/80 dark:border-slate-800 transition-colors animate-fade-in-up" style={{ animationDelay: '150ms' }}>
-            <div className="w-12 h-12 rounded-2xl bg-teal-50 dark:bg-teal-950/60 text-teal-600 dark:text-teal-400 flex items-center justify-center mb-6">
+          <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 sm:p-10 shadow-xl dark:shadow-black/30 border border-slate-200/80 dark:border-slate-800 transition-colors animate-fade-in-up" style={{ animationDelay: '120ms' }}>
+            <div className="w-12 h-12 rounded-2xl bg-[#fff5f2] dark:bg-[#ec4d25]/15 text-[#ec4d25] border border-[#ffdcd2] dark:border-[#ec4d25]/30 flex items-center justify-center mb-6">
               <HiGlobeAlt className="text-2xl" />
             </div>
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Our Mission</h2>
@@ -110,7 +105,7 @@ export default function About() {
       {/* Milestones / Journey */}
       <section className="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-black uppercase tracking-widest text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-950/60 px-3 py-1 rounded-full">
+          <span className="text-xs font-black uppercase tracking-widest text-[#ec4d25] dark:text-[#f78c72] bg-[#fff5f2] dark:bg-[#ec4d25]/10 border border-[#ffdcd2] dark:border-[#ec4d25]/20 px-3.5 py-1.5 rounded-full">
             Our Journey
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
@@ -120,7 +115,7 @@ export default function About() {
 
         <div className="relative">
           {/* Vertical line */}
-          <div className="absolute left-8 sm:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 via-teal-500 to-emerald-500 opacity-30" />
+          <div className="absolute left-8 sm:left-1/2 top-0 bottom-0 w-0.5 bg-[#ec4d25]/20" />
           
           <div className="space-y-8">
             {milestones.map((m, i) => (
@@ -135,7 +130,7 @@ export default function About() {
                   </div>
                 </div>
                 <div className="relative z-10 flex-shrink-0">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white font-black text-sm shadow-lg shadow-emerald-500/20">
+                  <div className="w-16 h-16 rounded-2xl bg-[#ec4d25] flex items-center justify-center text-white font-black text-sm shadow-sm">
                     {m.year}
                   </div>
                 </div>
@@ -155,7 +150,7 @@ export default function About() {
       <section className="py-20 bg-white dark:bg-slate-900 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="text-xs font-black uppercase tracking-widest text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-950/60 px-3 py-1 rounded-full">
+            <span className="text-xs font-black uppercase tracking-widest text-[#ec4d25] dark:text-[#f78c72] bg-[#fff5f2] dark:bg-[#ec4d25]/10 border border-[#ffdcd2] dark:border-[#ec4d25]/20 px-3.5 py-1.5 rounded-full">
               Our Principles
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
@@ -167,13 +162,13 @@ export default function About() {
             {values.map((v, i) => (
               <div
                 key={i}
-                className="bg-slate-50 dark:bg-slate-800/60 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-lg dark:shadow-black/30 hover:-translate-y-1.5 transition-all duration-300 group animate-fade-in-up"
+                className="bg-slate-50 dark:bg-slate-800/60 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-[#ec4d25]/40 hover:-translate-y-1 transition-all duration-300 group animate-fade-in-up"
                 style={{ animationDelay: `${i * 100}ms` }}
               >
-                <div className="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 rounded-xl bg-[#fff5f2] dark:bg-[#ec4d25]/15 text-[#ec4d25] border border-[#ffdcd2] dark:border-[#ec4d25]/30 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
                   <v.Icon className="text-2xl" />
                 </div>
-                <h3 className="font-bold text-slate-900 dark:text-white text-base mb-2 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition">{v.title}</h3>
+                <h3 className="font-bold text-slate-900 dark:text-white text-base mb-2 group-hover:text-[#ec4d25] transition-colors">{v.title}</h3>
                 <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{v.desc}</p>
               </div>
             ))}
@@ -185,7 +180,7 @@ export default function About() {
       <section className="py-20 bg-slate-50 dark:bg-slate-950 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="text-xs font-black uppercase tracking-widest text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-1 rounded-full">
+            <span className="text-xs font-black uppercase tracking-widest text-[#ec4d25] dark:text-[#f78c72] bg-[#fff5f2] dark:bg-[#ec4d25]/10 border border-[#ffdcd2] dark:border-[#ec4d25]/20 px-3.5 py-1.5 rounded-full">
               Leadership
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
@@ -200,10 +195,10 @@ export default function About() {
             {team.map((member, i) => (
               <div
                 key={i}
-                className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group animate-fade-in-up"
+                className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 text-center hover:shadow-md hover:border-[#ec4d25]/40 hover:-translate-y-1 transition-all duration-300 group animate-fade-in-up"
                 style={{ animationDelay: `${i * 100}ms` }}
               >
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 text-white flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-md shadow-emerald-500/20">
+                <div className="w-16 h-16 rounded-2xl bg-[#ec4d25] text-white flex items-center justify-center mx-auto mb-4 group-hover:scale-105 transition-transform shadow-sm">
                   <member.Icon className="text-2xl text-white" />
                 </div>
                 <h4 className="font-bold text-slate-900 dark:text-white text-sm">{member.name}</h4>
@@ -215,15 +210,15 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-center">
+      <section className="py-16 bg-[#ec4d25] text-white text-center">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-extrabold mb-4">Want to collaborate with us?</h2>
-          <p className="text-emerald-100 text-sm max-w-xl mx-auto mb-8">
+          <p className="text-white/90 text-sm max-w-xl mx-auto mb-8">
             We actively partner with CSR programs, corporates, universities, and international foundations.
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 bg-white text-slate-900 font-extrabold px-6 py-3 rounded-xl text-sm transition shadow-xl hover:scale-105 active:scale-[0.98]"
+            className="inline-flex items-center gap-2 bg-white text-[#ec4d25] font-extrabold px-6 py-3 rounded-xl text-sm transition shadow-sm hover:bg-slate-50 active:scale-[0.98]"
           >
             Connect With Our Team <HiArrowRight />
           </Link>

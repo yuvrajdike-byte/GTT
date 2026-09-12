@@ -6,7 +6,6 @@ import {
   HiClock,
   HiUserGroup,
   HiArrowRight,
-  HiHeart,
   HiCheckCircle,
   HiAcademicCap,
   HiBriefcase,
@@ -29,7 +28,7 @@ const gttEvents = [
     location: 'GTT Foundation Training Center, Pune',
     organizer: 'GTT Skilling Team',
     capacity: 120,
-    image_url: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=800&q=80',
+    image_url: 'https://images.unsplash.com/photo-1569653402334-2e98fbaa80ee?w=800&auto=format&fit=crop&q=80',
     type: 'Upcoming',
     registration_fee: 'Free',
   },
@@ -43,7 +42,7 @@ const gttEvents = [
     location: 'Community Hall, Satara District',
     organizer: 'Bridge 4 Bharat Initiative',
     capacity: 80,
-    image_url: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80',
+    image_url: 'https://images.unsplash.com/photo-1692269725851-f5d3a3f02807?w=800&auto=format&fit=crop&q=80',
     type: 'Upcoming',
     registration_fee: 'Free',
   },
@@ -57,7 +56,7 @@ const gttEvents = [
     location: 'Pune International Convention Center',
     organizer: 'GTT Placement Cell',
     capacity: 300,
-    image_url: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80',
+    image_url: 'https://images.unsplash.com/photo-1698993082050-19ca94c62fb8?w=800&auto=format&fit=crop&q=80',
     type: 'Upcoming',
     registration_fee: 'Free',
   },
@@ -71,7 +70,7 @@ const gttEvents = [
     location: 'GTT Foundation, Mumbai Office',
     organizer: 'Livelihood Enhancement Program',
     capacity: 60,
-    image_url: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80',
+    image_url: 'https://images.unsplash.com/photo-1646578486121-67aed93c4f4e?w=800&auto=format&fit=crop&q=80',
     type: 'Upcoming',
     registration_fee: 'Free',
   },
@@ -85,7 +84,7 @@ const gttEvents = [
     location: 'GTT Foundation HQ, Pune',
     organizer: 'GTT Mentoring Council',
     capacity: 150,
-    image_url: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&q=80',
+    image_url: 'https://images.unsplash.com/photo-1562789233-495f52b583dd?w=800&auto=format&fit=crop&q=80',
     type: 'Upcoming',
     registration_fee: 'Free',
   },
@@ -137,45 +136,39 @@ export default function Events() {
 
   return (
     <div className="bg-slate-50 dark:bg-slate-950 min-h-screen transition-colors">
-      {/* Hero Header */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 text-white py-24 sm:py-28">
-        {/* Animated background blobs */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 right-20 w-80 h-80 bg-teal-400 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-10 left-10 w-96 h-96 bg-emerald-400 rounded-full blur-3xl" />
-        </div>
-
+      {/* Hero Header — Clean Slate, Zero Glow Blobs */}
+      <section className="relative overflow-hidden bg-slate-900 text-white py-24 sm:py-28 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl">
             <div className="flex items-center gap-3 mb-6">
-              <span className="text-xs font-black uppercase tracking-widest text-emerald-400 bg-emerald-900/60 px-4 py-1.5 rounded-full border border-emerald-500/30 backdrop-blur-sm flex items-center gap-2">
+              <span className="text-xs font-black uppercase tracking-widest text-[#f78c72] bg-[#ec4d25]/15 px-4 py-1.5 rounded-full border border-[#ec4d25]/30 flex items-center gap-2">
                 <HiCalendar className="text-sm" />
                 Upcoming Events
               </span>
-              <span className="h-px flex-1 bg-gradient-to-r from-emerald-500/50 to-transparent max-w-32" />
+              <span className="h-px flex-1 bg-[#ec4d25]/30 max-w-32" />
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
               Community{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
+              <span className="text-[#ec4d25]">
                 Events
               </span>{' '}
               &amp; Workshops
             </h1>
-            <p className="text-emerald-100/80 text-lg sm:text-xl max-w-3xl mt-6 leading-relaxed">
+            <p className="text-slate-300 text-lg sm:text-xl max-w-3xl mt-6 leading-relaxed">
               Join our career development bootcamps, skilling workshops, industry connect sessions, 
               and mentoring events. All events are free and open to youth from underserved communities.
             </p>
             <div className="flex items-center gap-6 mt-8 text-sm">
-              <div className="flex items-center gap-2 text-emerald-300">
-                <HiCheckCircle className="text-lg" />
+              <div className="flex items-center gap-2 text-slate-300">
+                <HiCheckCircle className="text-lg text-[#ec4d25]" />
                 <span className="font-semibold">Free Registration</span>
               </div>
-              <div className="flex items-center gap-2 text-emerald-300">
-                <HiCheckCircle className="text-lg" />
+              <div className="flex items-center gap-2 text-slate-300">
+                <HiCheckCircle className="text-lg text-[#ec4d25]" />
                 <span className="font-semibold">Certificate Provided</span>
               </div>
-              <div className="flex items-center gap-2 text-emerald-300 hidden sm:flex">
-                <HiCheckCircle className="text-lg" />
+              <div className="flex items-center gap-2 text-slate-300 hidden sm:flex">
+                <HiCheckCircle className="text-lg text-[#ec4d25]" />
                 <span className="font-semibold">Placement Support</span>
               </div>
             </div>
@@ -192,7 +185,7 @@ export default function Events() {
               onClick={() => setSelectedCategory(cat)}
               className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition ${
                 selectedCategory === cat
-                  ? 'bg-emerald-600 text-white shadow-sm shadow-emerald-600/25'
+                  ? 'bg-[#ec4d25] text-white shadow-sm'
                   : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
               }`}
             >
@@ -206,12 +199,12 @@ export default function Events() {
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         {loading ? (
           <div className="flex flex-col items-center justify-center py-20 gap-4">
-            <div className="w-12 h-12 border-4 border-emerald-600 border-t-transparent rounded-full animate-spin" />
+            <div className="w-12 h-12 border-4 border-[#ec4d25] border-t-transparent rounded-full animate-spin" />
             <p className="text-sm font-semibold text-slate-500 dark:text-slate-400">Loading events...</p>
           </div>
         ) : filteredEvents.length === 0 ? (
           <div className="text-center py-20 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 transition-colors">
-            <div className="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto mb-4">
+            <div className="w-14 h-14 rounded-2xl bg-[#fff5f2] dark:bg-[#ec4d25]/15 text-[#ec4d25] border border-[#ffdcd2] dark:border-[#ec4d25]/30 flex items-center justify-center mx-auto mb-4">
               <HiCalendar className="text-3xl" />
             </div>
             <p className="text-slate-900 dark:text-white text-lg font-bold mb-2">
@@ -225,7 +218,7 @@ export default function Events() {
             {selectedCategory !== 'All' && (
               <button
                 onClick={() => setSelectedCategory('All')}
-                className="px-5 py-2.5 text-xs font-bold text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900 rounded-xl hover:bg-emerald-50 dark:hover:bg-emerald-950/40 transition"
+                className="px-5 py-2.5 text-xs font-bold text-[#ec4d25] border border-[#ffdcd2] dark:border-[#ec4d25]/30 rounded-xl hover:bg-[#fff5f2] dark:hover:bg-[#ec4d25]/10 transition"
               >
                 View All Events
               </button>
@@ -241,15 +234,15 @@ export default function Events() {
               return (
                 <div
                   key={ev.id}
-                  className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm overflow-hidden hover:shadow-xl dark:shadow-black/30 hover:-translate-y-1 transition-all duration-300 flex flex-col md:flex-row group"
+                  className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm overflow-hidden hover:shadow-lg dark:shadow-black/30 hover:border-[#ec4d25]/40 hover:-translate-y-1 transition-all duration-300 flex flex-col md:flex-row group"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   {/* Event Image */}
                   <div className="md:w-80 h-56 md:h-auto relative overflow-hidden bg-slate-100 dark:bg-slate-800 flex-shrink-0">
                     <img
-                      src={ev.image_url || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800'}
+                      src={ev.image_url || 'https://images.unsplash.com/photo-1698993082050-19ca94c62fb8?w=800&auto=format&fit=crop&q=80'}
                       alt={ev.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                     
@@ -259,8 +252,8 @@ export default function Events() {
                     </span>
 
                     {/* Date Card Overlay */}
-                    <div className="absolute bottom-4 left-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm rounded-xl p-3 shadow-lg text-center min-w-[70px]">
-                      <p className="text-2xl font-black text-emerald-600 dark:text-emerald-400 leading-none">
+                    <div className="absolute bottom-4 left-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm rounded-xl p-3 shadow-sm text-center min-w-[70px]">
+                      <p className="text-2xl font-black text-[#ec4d25] dark:text-[#f78c72] leading-none">
                         {eventDate.getDate()}
                       </p>
                       <p className="text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 mt-0.5">
@@ -273,8 +266,8 @@ export default function Events() {
 
                     {/* Days Until Badge */}
                     {isUpcoming && daysUntil <= 30 && (
-                      <div className="absolute top-4 right-4 bg-emerald-500/90 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
+                      <div className="absolute top-4 right-4 bg-[#ec4d25] text-white text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
+                        <span className="w-1.5 h-1.5 bg-white rounded-full" />
                         {daysUntil === 0 ? 'Today!' : daysUntil === 1 ? 'Tomorrow' : `In ${daysUntil} days`}
                       </div>
                     )}
@@ -285,7 +278,7 @@ export default function Events() {
                     <div>
                       {/* Date & Time Info */}
                       <div className="flex flex-wrap items-center gap-3 text-xs font-bold mb-4">
-                        <span className="flex items-center gap-1.5 text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-1.5 rounded-lg">
+                        <span className="flex items-center gap-1.5 text-[#ec4d25] dark:text-[#f78c72] bg-[#fff5f2] dark:bg-[#ec4d25]/15 px-3 py-1.5 rounded-lg border border-[#ffdcd2] dark:border-[#ec4d25]/30">
                           <HiCalendar className="text-sm" />
                           {eventDate.toLocaleDateString('en-IN', {
                             weekday: 'short',
@@ -299,14 +292,14 @@ export default function Events() {
                           10:00 AM – {ev.end_time || '04:00 PM'} IST
                         </span>
                         {ev.registration_fee && (
-                          <span className="text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-1 rounded-lg">
+                          <span className="text-[#ec4d25] bg-[#fff5f2] dark:bg-[#ec4d25]/10 px-2.5 py-1 rounded-lg">
                             {ev.registration_fee}
                           </span>
                         )}
                       </div>
 
                       {/* Title */}
-                      <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition mb-3">
+                      <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white group-hover:text-[#ec4d25] transition-colors mb-3">
                         {ev.title}
                       </h3>
 
@@ -318,12 +311,12 @@ export default function Events() {
                       {/* Meta Info */}
                       <div className="flex flex-wrap gap-4 text-xs text-slate-500 dark:text-slate-400">
                         <span className="flex items-center gap-1.5">
-                          <HiLocationMarker className="text-emerald-600 dark:text-emerald-400 text-sm" />
+                          <HiLocationMarker className="text-[#ec4d25] text-sm" />
                           {ev.location}
                         </span>
                         {ev.organizer && (
                           <span className="flex items-center gap-1.5">
-                            <HiUserGroup className="text-emerald-600 dark:text-emerald-400 text-sm" />
+                            <HiUserGroup className="text-[#ec4d25] text-sm" />
                             {ev.organizer}
                           </span>
                         )}
@@ -339,10 +332,10 @@ export default function Events() {
                       </div>
                       <button
                         onClick={() => setRsvpModal(ev)}
-                        className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-bold px-6 py-2.5 rounded-xl shadow-sm shadow-emerald-600/20 transition flex items-center gap-2 group/btn"
+                        className="bg-[#ec4d25] hover:bg-[#d73e16] active:bg-[#b8310e] text-white text-xs sm:text-sm font-bold px-6 py-2.5 rounded-xl shadow-sm transition-colors flex items-center gap-2 group/btn"
                       >
                         Register Free Pass
-                        <HiArrowRight className="group-hover/btn:translate-x-0.5 transition" />
+                        <HiArrowRight className="group-hover/btn:translate-x-0.5 transition-transform" />
                       </button>
                     </div>
                   </div>
@@ -357,7 +350,7 @@ export default function Events() {
       <section className="py-16 bg-white dark:bg-slate-900 transition-colors">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-black uppercase tracking-widest text-emerald-600 dark:text-emerald-400 bg-emerald-100/60 dark:bg-emerald-950/60 px-3 py-1 rounded-full">
+            <span className="text-xs font-black uppercase tracking-widest text-[#ec4d25] dark:text-[#f78c72] bg-[#fff5f2] dark:bg-[#ec4d25]/10 border border-[#ffdcd2] dark:border-[#ec4d25]/20 px-3.5 py-1.5 rounded-full">
               Why Attend
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
@@ -400,12 +393,12 @@ export default function Events() {
             ].map((item) => (
               <div
                 key={item.title}
-                className="bg-slate-50 dark:bg-slate-800/60 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 hover:border-emerald-300 dark:hover:border-emerald-700 hover:-translate-y-1 transition group"
+                className="bg-slate-50 dark:bg-slate-800/60 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 hover:border-[#ec4d25]/40 hover:-translate-y-1 transition group"
               >
-                <div className="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 rounded-xl bg-[#fff5f2] dark:bg-[#ec4d25]/15 text-[#ec4d25] border border-[#ffdcd2] dark:border-[#ec4d25]/30 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
                   <item.Icon className="text-2xl" />
                 </div>
-                <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition">
+                <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2 group-hover:text-[#ec4d25] transition-colors">
                   {item.title}
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
@@ -417,27 +410,25 @@ export default function Events() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-emerald-600 to-teal-600 text-white relative overflow-hidden">
-        <div className="absolute -top-24 -left-24 w-72 h-72 bg-white/10 rounded-full blur-2xl pointer-events-none" />
-        <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-emerald-300/20 rounded-full blur-2xl pointer-events-none" />
+      {/* CTA — Clean #ec4d25, Zero Glow */}
+      <section className="py-16 bg-[#ec4d25] text-white relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
             Can't Find a Suitable Event?
           </h2>
-          <p className="text-emerald-100 text-base sm:text-lg max-w-2xl mx-auto mb-8">
+          <p className="text-white/90 text-base sm:text-lg max-w-2xl mx-auto mb-8">
             Reach out to us and we'll help you find the right program or event matching your career goals and skill level.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               to="/contact"
-              className="bg-white text-slate-900 font-extrabold px-8 py-4 rounded-xl text-sm shadow-xl hover:bg-slate-100 hover:scale-105 transition flex items-center gap-2"
+              className="bg-white text-[#ec4d25] font-extrabold px-8 py-4 rounded-xl text-sm shadow-sm hover:bg-slate-50 transition-colors flex items-center gap-2"
             >
               Get in Touch <HiArrowRight />
             </Link>
             <Link
               to="/volunteer"
-              className="bg-emerald-800/60 hover:bg-emerald-800/80 border border-emerald-400/40 text-white font-bold px-8 py-4 rounded-xl text-sm transition"
+              className="bg-transparent hover:bg-white/10 border-2 border-white text-white font-bold px-8 py-4 rounded-xl text-sm transition-colors"
             >
               Volunteer at Events
             </Link>
@@ -450,10 +441,10 @@ export default function Events() {
         <div className="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-white dark:bg-slate-900 rounded-2xl max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden animate-fade-in">
             {/* Modal Header */}
-            <div className="bg-gradient-to-r from-emerald-600 to-teal-600 p-5 text-white">
+            <div className="bg-[#ec4d25] p-5 text-white">
               <h3 className="text-lg font-bold">Register for Event</h3>
-              <p className="text-emerald-100 text-sm mt-1">{rsvpModal.title}</p>
-              <div className="flex items-center gap-3 mt-3 text-xs text-emerald-200">
+              <p className="text-white/90 text-sm mt-1">{rsvpModal.title}</p>
+              <div className="flex items-center gap-3 mt-3 text-xs text-white/80">
                 <span className="flex items-center gap-1">
                   <HiCalendar />
                   {new Date(rsvpModal.event_date).toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' })}
@@ -477,7 +468,7 @@ export default function Events() {
                   placeholder="e.g. Aditi Rao"
                   value={rsvpForm.name}
                   onChange={(e) => setRsvpForm({ ...rsvpForm, name: e.target.value })}
-                  className="w-full px-3.5 py-2.5 text-sm border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
+                  className="w-full px-3.5 py-2.5 text-sm border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#ec4d25] transition"
                 />
               </div>
 
@@ -491,7 +482,7 @@ export default function Events() {
                   placeholder="aditi@example.com"
                   value={rsvpForm.email}
                   onChange={(e) => setRsvpForm({ ...rsvpForm, email: e.target.value })}
-                  className="w-full px-3.5 py-2.5 text-sm border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
+                  className="w-full px-3.5 py-2.5 text-sm border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#ec4d25] transition"
                 />
               </div>
 
@@ -505,7 +496,7 @@ export default function Events() {
                   placeholder="+91 98765 43210"
                   value={rsvpForm.phone}
                   onChange={(e) => setRsvpForm({ ...rsvpForm, phone: e.target.value })}
-                  className="w-full px-3.5 py-2.5 text-sm border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
+                  className="w-full px-3.5 py-2.5 text-sm border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#ec4d25] transition"
                 />
               </div>
 
@@ -519,7 +510,7 @@ export default function Events() {
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold rounded-xl transition shadow-md shadow-emerald-600/20 flex items-center justify-center gap-2"
+                  className="flex-1 px-4 py-2.5 bg-[#ec4d25] hover:bg-[#d73e16] text-white text-sm font-bold rounded-xl transition shadow-sm flex items-center justify-center gap-2"
                 >
                   <HiCheckCircle />
                   Confirm Registration

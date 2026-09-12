@@ -40,7 +40,7 @@ export default function Admin() {
     description: '',
     target_beneficiaries: '',
     target_amount: 1000000,
-    image_url: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800'
+    image_url: 'https://images.unsplash.com/photo-1692269725851-f5d3a3f02807?w=800&auto=format&fit=crop&q=80'
   });
 
   const [eventForm, setEventForm] = useState(() => ({
@@ -51,7 +51,7 @@ export default function Admin() {
     organizer: 'GTT Team',
     category: 'Community',
     capacity: 100,
-    image_url: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?w=800'
+    image_url: 'https://images.unsplash.com/photo-1698993082050-19ca94c62fb8?w=800&auto=format&fit=crop&q=80'
   }));
 
   const [blogForm, setBlogForm] = useState({
@@ -61,7 +61,7 @@ export default function Admin() {
     excerpt: '',
     content: '',
     author_name: user?.user_metadata?.full_name || 'GTT Team',
-    image_url: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800',
+    image_url: 'https://images.unsplash.com/photo-1692269725911-87697c558be1?w=800&auto=format&fit=crop&q=80',
     published: true
   });
 
@@ -134,7 +134,8 @@ export default function Admin() {
         }
       }
     } catch (err) {
-      console.warn('Fetch note:', err);
+      console.error(err);
+      toast.error('Failed to load ' + activeTab);
     } finally {
       setLoading(false);
     }
@@ -142,33 +143,36 @@ export default function Admin() {
 
   useEffect(() => {
     fetchTabContent();
-  }, [activeTab, token]);
+  }, [activeTab]);
 
   const handleDelete = async (id) => {
-    if (!window.confirm('Are you sure you want to delete this record?')) return;
-
+    if (!window.confirm('Are you sure you want to delete this item?')) return;
     try {
-      const endpoint =
-        activeTab === 'programs' ? `/api/programs/${id}` :
-        activeTab === 'events' ? `/api/events/${id}` :
-        activeTab === 'blogs' ? `/api/blogs/${id}` :
-        activeTab === 'contacts' ? `/api/contact/${id}` :
-        activeTab === 'volunteers' ? `/api/volunteers/${id}` : null;
+      let endpoint = '';
+      if (activeTab === 'programs') endpoint = `/api/programs/${id}`;
+      else if (activeTab === 'events') endpoint = `/api/events/${id}`;
+      else if (activeTab === 'blogs') endpoint = `/api/blogs/${id}`;
+      else if (activeTab === 'donations') endpoint = `/api/donations/${id}`;
+      else if (activeTab === 'contacts') endpoint = `/api/contact/${id}`;
+      else if (activeTab === 'volunteers') endpoint = `/api/volunteers/${id}`;
 
-      if (endpoint) {
-        await fetch(endpoint, {
-          method: 'DELETE',
-          headers: token ? { Authorization: `Bearer ${token}` } : {}
-        });
+      const res = await fetch(endpoint, {
+        method: 'DELETE',
+        headers: token ? { Authorization: `Bearer ${token}` } : {}
+      });
+
+      if (!res.ok) {
+        let table = activeTab;
+        if (activeTab === 'contacts') table = 'contacts';
+        const { error } = await supabase.from(table).delete().eq('id', id);
+        if (error) throw error;
       }
 
-      // Also attempt direct Supabase delete
-      await supabase.from(activeTab).delete().eq('id', id);
-
-      toast.success('Item deleted successfully');
-      setItems(items.filter((i) => i.id !== id));
-    } catch {
-      toast.error('Failed to delete');
+      toast.success('Record successfully deleted.');
+      setItems(items.filter((item) => item.id !== id));
+    } catch (err) {
+      console.error(err);
+      toast.error('Delete operation failed.');
     }
   };
 
@@ -181,18 +185,26 @@ export default function Admin() {
           'Content-Type': 'application/json',
           ...(token ? { Authorization: `Bearer ${token}` } : {})
         },
-        body: JSON.stringify(programForm),
+        body: JSON.stringify(programForm)
       });
-
       if (!res.ok) {
-        await supabase.from('programs').insert([programForm]);
+        const { error } = await supabase.from('programs').insert([programForm]);
+        if (error) throw error;
       }
-
-      toast.success('New program added!');
+      toast.success('Program created successfully!');
       setShowModal(false);
+      setProgramForm({
+        title: '',
+        category: 'Education',
+        description: '',
+        target_beneficiaries: '',
+        target_amount: 1000000,
+        image_url: 'https://images.unsplash.com/photo-1692269725851-f5d3a3f02807?w=800&auto=format&fit=crop&q=80'
+      });
       fetchTabContent();
     } catch (err) {
-      toast.error(err.message || 'Error saving program');
+      console.error(err);
+      toast.error('Failed to create program.');
     }
   };
 
@@ -205,18 +217,28 @@ export default function Admin() {
           'Content-Type': 'application/json',
           ...(token ? { Authorization: `Bearer ${token}` } : {})
         },
-        body: JSON.stringify(eventForm),
+        body: JSON.stringify(eventForm)
       });
-
       if (!res.ok) {
-        await supabase.from('events').insert([eventForm]);
+        const { error } = await supabase.from('events').insert([eventForm]);
+        if (error) throw error;
       }
-
-      toast.success('New event created!');
+      toast.success('Event scheduled successfully!');
       setShowModal(false);
+      setEventForm({
+        title: '',
+        description: '',
+        event_date: new Date(Date.now() + 7 * 86400000).toISOString().slice(0, 16),
+        location: '',
+        organizer: 'GTT Team',
+        category: 'Community',
+        capacity: 100,
+        image_url: 'https://images.unsplash.com/photo-1698993082050-19ca94c62fb8?w=800&auto=format&fit=crop&q=80'
+      });
       fetchTabContent();
     } catch (err) {
-      toast.error(err.message || 'Error saving event');
+      console.error(err);
+      toast.error('Failed to schedule event.');
     }
   };
 
@@ -232,32 +254,42 @@ export default function Admin() {
           'Content-Type': 'application/json',
           ...(token ? { Authorization: `Bearer ${token}` } : {})
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(payload)
       });
-
       if (!res.ok) {
-        await supabase.from('blogs').insert([payload]);
+        const { error } = await supabase.from('blogs').insert([payload]);
+        if (error) throw error;
       }
-
-      toast.success('Article published!');
+      toast.success('Article published successfully!');
       setShowModal(false);
+      setBlogForm({
+        title: '',
+        slug: '',
+        category: 'Impact Stories',
+        excerpt: '',
+        content: '',
+        author_name: user?.user_metadata?.full_name || 'GTT Team',
+        image_url: 'https://images.unsplash.com/photo-1692269725911-87697c558be1?w=800&auto=format&fit=crop&q=80',
+        published: true
+      });
       fetchTabContent();
     } catch (err) {
-      toast.error(err.message || 'Error saving article');
+      console.error(err);
+      toast.error('Failed to publish article.');
     }
   };
 
   return (
     <div className="min-h-screen bg-slate-100 dark:bg-slate-950 transition-colors">
       {/* Top Navbar */}
-      <header className="bg-slate-900 text-white shadow-md">
+      <header className="bg-slate-900 text-white shadow-sm border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Link to="/" className="flex items-center gap-2">
-              <HiAcademicCap className="text-2xl text-emerald-400" />
+              <HiAcademicCap className="text-2xl text-[#ec4d25]" />
               <span className="font-black text-lg text-white">GTT Admin</span>
             </Link>
-            <span className="hidden sm:inline-block text-xs bg-emerald-800 text-emerald-200 px-2.5 py-0.5 rounded-full font-bold">
+            <span className="hidden sm:inline-block text-xs bg-[#fff5f2] dark:bg-[#ec4d25]/15 text-[#ec4d25] dark:text-[#f78c72] px-2.5 py-0.5 rounded-full font-bold border border-[#ffdcd2] dark:border-[#ec4d25]/30">
               Supabase Auth Active
             </span>
           </div>
@@ -292,9 +324,9 @@ export default function Admin() {
                   setActiveTab(t.id);
                   setShowModal(false);
                 }}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition ${
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer ${
                   active
-                    ? 'bg-emerald-600 text-white shadow-sm'
+                    ? 'bg-[#ec4d25] text-white shadow-sm'
                     : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
                 }`}
               >
@@ -315,7 +347,7 @@ export default function Admin() {
           <div className="flex items-center gap-3">
             <button
               onClick={fetchTabContent}
-              className="flex items-center gap-1.5 px-3 py-2 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold transition shadow-sm"
+              className="flex items-center gap-1.5 px-3 py-2 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold transition shadow-sm cursor-pointer"
             >
               <HiRefresh /> Refresh
             </button>
@@ -323,7 +355,7 @@ export default function Admin() {
             {['programs', 'events', 'blogs'].includes(activeTab) && (
               <button
                 onClick={() => setShowModal(true)}
-                className="flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-extrabold transition shadow-md"
+                className="flex items-center gap-1.5 px-4 py-2 bg-[#ec4d25] hover:bg-[#d73e16] text-white rounded-xl text-xs font-extrabold transition shadow-sm cursor-pointer"
               >
                 <HiPlus className="text-base" /> Add New {activeTab.slice(0, -1)}
               </button>
@@ -334,7 +366,7 @@ export default function Admin() {
         {/* Content Table / List */}
         {loading ? (
           <div className="bg-white dark:bg-slate-900 rounded-2xl p-16 text-center shadow-sm transition-colors">
-            <div className="w-10 h-10 border-4 border-emerald-600 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+            <div className="w-10 h-10 border-4 border-[#ec4d25] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
             <p className="text-xs font-bold text-slate-500 dark:text-slate-400">Fetching records from Supabase...</p>
           </div>
         ) : items.length === 0 ? (
@@ -377,7 +409,7 @@ export default function Admin() {
                       </td>
                       <td className="px-6 py-4 max-w-md truncate">
                         {activeTab === 'donations' ? (
-                          <span className="font-black text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-1 rounded-lg">
+                          <span className="font-black text-[#ec4d25] dark:text-[#f78c72] bg-[#fff5f2] dark:bg-[#ec4d25]/15 px-2.5 py-1 rounded-lg border border-[#ffdcd2] dark:border-[#ec4d25]/30">
                             ₹{Number(item.amount).toLocaleString()}
                           </span>
                         ) : activeTab === 'events' ? (
@@ -398,7 +430,7 @@ export default function Admin() {
                       <td className="px-6 py-4 text-right">
                         <button
                           onClick={() => handleDelete(item.id)}
-                          className="text-rose-500 hover:text-rose-700 p-1.5 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/40 transition"
+                          className="text-rose-500 hover:text-rose-700 p-1.5 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/40 transition cursor-pointer"
                           title="Delete Record"
                         >
                           <HiTrash className="text-lg" />
@@ -429,7 +461,7 @@ export default function Admin() {
                       required
                       value={programForm.title}
                       onChange={(e) => setProgramForm({ ...programForm, title: e.target.value })}
-                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm"
+                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-[#ec4d25] focus:outline-none"
                     />
                   </div>
                   <div>
@@ -437,7 +469,7 @@ export default function Admin() {
                     <select
                       value={programForm.category}
                       onChange={(e) => setProgramForm({ ...programForm, category: e.target.value })}
-                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm"
+                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-[#ec4d25] focus:outline-none"
                     >
                       <option value="Education">Education</option>
                       <option value="Healthcare">Healthcare</option>
@@ -452,7 +484,7 @@ export default function Admin() {
                       rows={3}
                       value={programForm.description}
                       onChange={(e) => setProgramForm({ ...programForm, description: e.target.value })}
-                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm"
+                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-[#ec4d25] focus:outline-none"
                     />
                   </div>
                   <div>
@@ -461,7 +493,7 @@ export default function Admin() {
                       type="text"
                       value={programForm.target_beneficiaries}
                       onChange={(e) => setProgramForm({ ...programForm, target_beneficiaries: e.target.value })}
-                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm"
+                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-[#ec4d25] focus:outline-none"
                     />
                   </div>
                   <div>
@@ -470,20 +502,20 @@ export default function Admin() {
                       type="url"
                       value={programForm.image_url}
                       onChange={(e) => setProgramForm({ ...programForm, image_url: e.target.value })}
-                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm"
+                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-[#ec4d25] focus:outline-none"
                     />
                   </div>
                   <div className="flex gap-3 pt-2">
                     <button
                       type="button"
                       onClick={() => setShowModal(false)}
-                      className="flex-1 py-2.5 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 font-bold rounded-xl text-sm transition"
+                      className="flex-1 py-2.5 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 font-bold rounded-xl text-sm transition cursor-pointer"
                     >
                       Cancel
                     </button>
                     <button
                       type="submit"
-                      className="flex-1 py-2.5 bg-emerald-600 text-white font-bold rounded-xl text-sm"
+                      className="flex-1 py-2.5 bg-[#ec4d25] hover:bg-[#d73e16] text-white font-bold rounded-xl text-sm cursor-pointer"
                     >
                       Save Program
                     </button>
@@ -500,7 +532,7 @@ export default function Admin() {
                       required
                       value={eventForm.title}
                       onChange={(e) => setEventForm({ ...eventForm, title: e.target.value })}
-                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm"
+                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-[#ec4d25] focus:outline-none"
                     />
                   </div>
                   <div>
@@ -510,7 +542,7 @@ export default function Admin() {
                       required
                       value={eventForm.event_date}
                       onChange={(e) => setEventForm({ ...eventForm, event_date: e.target.value })}
-                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm"
+                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-[#ec4d25] focus:outline-none"
                     />
                   </div>
                   <div>
@@ -520,7 +552,7 @@ export default function Admin() {
                       required
                       value={eventForm.location}
                       onChange={(e) => setEventForm({ ...eventForm, location: e.target.value })}
-                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm"
+                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-[#ec4d25] focus:outline-none"
                     />
                   </div>
                   <div>
@@ -530,20 +562,20 @@ export default function Admin() {
                       rows={3}
                       value={eventForm.description}
                       onChange={(e) => setEventForm({ ...eventForm, description: e.target.value })}
-                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm"
+                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-[#ec4d25] focus:outline-none"
                     />
                   </div>
                   <div className="flex gap-3 pt-2">
                     <button
                       type="button"
                       onClick={() => setShowModal(false)}
-                      className="flex-1 py-2.5 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 font-bold rounded-xl text-sm transition"
+                      className="flex-1 py-2.5 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 font-bold rounded-xl text-sm transition cursor-pointer"
                     >
                       Cancel
                     </button>
                     <button
                       type="submit"
-                      className="flex-1 py-2.5 bg-emerald-600 text-white font-bold rounded-xl text-sm"
+                      className="flex-1 py-2.5 bg-[#ec4d25] hover:bg-[#d73e16] text-white font-bold rounded-xl text-sm cursor-pointer"
                     >
                       Save Event
                     </button>
@@ -560,7 +592,7 @@ export default function Admin() {
                       required
                       value={blogForm.title}
                       onChange={(e) => setBlogForm({ ...blogForm, title: e.target.value })}
-                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm"
+                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-[#ec4d25] focus:outline-none"
                     />
                   </div>
                   <div>
@@ -570,7 +602,7 @@ export default function Admin() {
                       rows={2}
                       value={blogForm.excerpt}
                       onChange={(e) => setBlogForm({ ...blogForm, excerpt: e.target.value })}
-                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm"
+                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-[#ec4d25] focus:outline-none"
                     />
                   </div>
                   <div>
@@ -580,20 +612,20 @@ export default function Admin() {
                       rows={5}
                       value={blogForm.content}
                       onChange={(e) => setBlogForm({ ...blogForm, content: e.target.value })}
-                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm"
+                      className="w-full px-3.5 py-2 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-[#ec4d25] focus:outline-none"
                     />
                   </div>
                   <div className="flex gap-3 pt-2">
                     <button
                       type="button"
                       onClick={() => setShowModal(false)}
-                      className="flex-1 py-2.5 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 font-bold rounded-xl text-sm transition"
+                      className="flex-1 py-2.5 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 font-bold rounded-xl text-sm transition cursor-pointer"
                     >
                       Cancel
                     </button>
                     <button
                       type="submit"
-                      className="flex-1 py-2.5 bg-emerald-600 text-white font-bold rounded-xl text-sm"
+                      className="flex-1 py-2.5 bg-[#ec4d25] hover:bg-[#d73e16] text-white font-bold rounded-xl text-sm cursor-pointer"
                     >
                       Publish Article
                     </button>

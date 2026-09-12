@@ -2,10 +2,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import { HiUserGroup, HiAcademicCap, HiBriefcase, HiLightBulb } from 'react-icons/hi';
 
 const stats = [
-  { icon: HiUserGroup, value: 25000, suffix: '+', label: 'Lives Impacted', color: 'from-emerald-500 to-teal-500' },
-  { icon: HiAcademicCap, value: 5000, suffix: '+', label: 'Youth Skilled', color: 'from-teal-500 to-cyan-500' },
-  { icon: HiBriefcase, value: 4500, suffix: '+', label: 'Placed in Jobs', color: 'from-cyan-500 to-blue-500' },
-  { icon: HiLightBulb, value: 200, suffix: '+', label: 'Corporate Partners', color: 'from-amber-500 to-orange-500' },
+  { icon: HiUserGroup, value: 25000, suffix: '+', label: 'Lives Impacted' },
+  { icon: HiAcademicCap, value: 5000, suffix: '+', label: 'Youth Skilled' },
+  { icon: HiBriefcase, value: 4500, suffix: '+', label: 'Placed in Jobs' },
+  { icon: HiLightBulb, value: 200, suffix: '+', label: 'Corporate Partners' },
 ];
 
 function AnimatedCounter({ target, suffix = '', duration = 2000 }) {
@@ -46,7 +46,7 @@ function AnimatedCounter({ target, suffix = '', duration = 2000 }) {
 export default function StatsBar() {
   return (
     <section className="relative z-20 -mt-10 mx-4 sm:mx-8 lg:mx-auto max-w-6xl">
-      <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-900/5 dark:shadow-black/30 rounded-2xl p-6 sm:p-8 transition-colors">
+      <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xl shadow-slate-900/5 dark:shadow-black/30 rounded-2xl p-6 sm:p-8 transition-colors">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {stats.map((stat, i) => {
             const Icon = stat.icon;
@@ -54,10 +54,10 @@ export default function StatsBar() {
               <div
                 key={i}
                 className="text-center group animate-fade-in-up"
-                style={{ animationDelay: `${i * 150}ms` }}
+                style={{ animationDelay: `${i * 120}ms` }}
               >
-                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${stat.color} flex items-center justify-center mx-auto mb-3 group-hover:scale-110 group-hover:shadow-lg transition-all duration-300 shadow-md`}>
-                  <Icon className="text-2xl text-white" />
+                <div className="w-14 h-14 rounded-2xl bg-[#fff5f2] dark:bg-[#ec4d25]/15 border border-[#ffdcd2] dark:border-[#ec4d25]/30 text-[#ec4d25] flex items-center justify-center mx-auto mb-3 group-hover:scale-105 group-hover:bg-[#ec4d25] group-hover:text-white transition-all duration-200 shadow-sm">
+                  <Icon className="text-2xl transition-colors" />
                 </div>
                 <p className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
                   <AnimatedCounter target={stat.value} suffix={stat.suffix} />

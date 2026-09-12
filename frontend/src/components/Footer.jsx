@@ -16,12 +16,12 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-slate-900 dark:bg-black text-slate-300 relative overflow-hidden transition-colors">
-      {/* Gradient top bar */}
-      <div className="h-1 w-full bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-500" />
+    <footer className="bg-slate-900 dark:bg-black text-slate-300 relative overflow-hidden transition-colors border-t border-slate-800">
+      {/* Brand top accent bar */}
+      <div className="h-1 w-full bg-[#ec4d25]" />
 
       {/* Newsletter Banner */}
-      <div className="bg-gradient-to-r from-emerald-900/50 to-teal-900/50 border-b border-slate-800">
+      <div className="bg-slate-800/50 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
@@ -35,11 +35,11 @@ export default function Footer() {
                 onChange={(e) => setNewsletterEmail(e.target.value)}
                 placeholder="your@email.com"
                 required
-                className="px-4 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 w-full md:w-64"
+                className="px-4 py-2.5 bg-slate-850 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#ec4d25] w-full md:w-64"
               />
               <button
                 type="submit"
-                className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-sm transition flex-shrink-0 flex items-center gap-1.5"
+                className="px-5 py-2.5 bg-[#ec4d25] hover:bg-[#d73e16] active:bg-[#b8310e] text-white font-bold rounded-xl text-sm transition-colors flex-shrink-0 flex items-center gap-1.5"
               >
                 Subscribe <HiArrowRight />
               </button>
@@ -53,11 +53,11 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-5">
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white font-bold text-xl shadow-md group-hover:scale-105 transition">
+              <div className="w-11 h-11 rounded-xl bg-[#ec4d25] flex items-center justify-center text-white font-bold text-xl shadow-sm group-hover:scale-105 transition-transform duration-200">
                 <HiAcademicCap className="text-2xl text-white" />
               </div>
               <span className="text-2xl font-black text-white tracking-tight">
-                GTT<span className="text-emerald-400"> Foundation</span>
+                GTT<span className="text-[#ec4d25]"> Foundation</span>
               </span>
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
@@ -68,7 +68,7 @@ export default function Footer() {
             {/* Social icons */}
             <div className="flex items-center gap-2.5 pt-1">
               {[FaTwitter, FaFacebook, FaInstagram, FaLinkedin, FaYoutube].map((Icon, i) => (
-                <a key={i} href="#" className="w-9 h-9 rounded-xl bg-slate-800/80 hover:bg-emerald-600 text-slate-400 hover:text-white flex items-center justify-center transition-all duration-300">
+                <a key={i} href="#" className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-[#ec4d25] text-slate-400 hover:text-white flex items-center justify-center transition-all duration-200">
                   <Icon size={14} />
                 </a>
               ))}
@@ -77,8 +77,8 @@ export default function Footer() {
             {/* Registration info */}
             <div className="flex flex-wrap gap-2 pt-1">
               {['12A Certified', '80G Tax Exempt', 'CSR-1 Registered'].map((badge) => (
-                <span key={badge} className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-950/60 px-2.5 py-1 rounded-lg border border-emerald-800/50">
-                  <HiCheckCircle className="text-xs" /> {badge}
+                <span key={badge} className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-[#f78c72] bg-[#ec4d25]/10 px-2.5 py-1 rounded-lg border border-[#ec4d25]/20">
+                  <HiCheckCircle className="text-xs text-[#ec4d25]" /> {badge}
                 </span>
               ))}
             </div>
@@ -87,7 +87,7 @@ export default function Footer() {
           {/* Quick Links */}
           <div>
             <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-5 flex items-center gap-2">
-              <span className="w-1.5 h-5 bg-emerald-500 rounded-full" />
+              <span className="w-1.5 h-5 bg-[#ec4d25] rounded-full" />
               Navigation
             </h4>
             <ul className="space-y-3 text-sm">
@@ -100,8 +100,8 @@ export default function Footer() {
                 { to: '/donate', text: 'Donate Now' },
               ].map((link) => (
                 <li key={link.to}>
-                  <Link to={link.to} className="text-slate-400 hover:text-emerald-400 transition-colors flex items-center gap-1.5 group">
-                    <HiArrowRight className="text-xs opacity-0 group-hover:opacity-100 transition" />
+                  <Link to={link.to} className="text-slate-400 hover:text-[#ec4d25] transition-colors flex items-center gap-1.5 group">
+                    <HiArrowRight className="text-xs opacity-0 group-hover:opacity-100 transition-opacity" />
                     {link.text}
                   </Link>
                 </li>
@@ -112,7 +112,7 @@ export default function Footer() {
           {/* Focus Areas */}
           <div>
             <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-5 flex items-center gap-2">
-              <span className="w-1.5 h-5 bg-teal-500 rounded-full" />
+              <span className="w-1.5 h-5 bg-[#ec4d25] rounded-full" />
               Focus Areas
             </h4>
             <ul className="space-y-3 text-sm text-slate-400">
@@ -128,41 +128,41 @@ export default function Footer() {
           {/* Contact Details */}
           <div>
             <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-5 flex items-center gap-2">
-              <span className="w-1.5 h-5 bg-cyan-500 rounded-full" />
+              <span className="w-1.5 h-5 bg-[#ec4d25] rounded-full" />
               Get in Touch
             </h4>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3 text-slate-400">
-                <HiLocationMarker className="text-emerald-400 text-lg flex-shrink-0 mt-0.5" />
+                <HiLocationMarker className="text-[#ec4d25] text-lg flex-shrink-0 mt-0.5" />
                 <span>Pune, Maharashtra, India</span>
               </li>
               <li className="flex items-center gap-3 text-slate-400">
-                <HiMail className="text-emerald-400 text-lg flex-shrink-0" />
+                <HiMail className="text-[#ec4d25] text-lg flex-shrink-0" />
                 <span>info@gttfoundation.org</span>
               </li>
               <li className="flex items-center gap-3 text-slate-400">
-                <HiPhone className="text-emerald-400 text-lg flex-shrink-0" />
+                <HiPhone className="text-[#ec4d25] text-lg flex-shrink-0" />
                 <span>+91 98346 71803</span>
               </li>
             </ul>
             <div className="mt-5">
               <Link
                 to="/donate"
-                className="inline-flex items-center gap-2 text-xs font-bold bg-emerald-600/20 text-emerald-400 hover:bg-emerald-600/30 px-4 py-2 rounded-lg uppercase tracking-wider transition"
+                className="inline-flex items-center gap-2 text-xs font-bold bg-[#ec4d25]/15 text-[#f78c72] hover:bg-[#ec4d25]/25 px-4 py-2 rounded-lg uppercase tracking-wider transition-colors border border-[#ec4d25]/30"
               >
-                <HiHeart className="text-rose-400" />
+                <HiHeart className="text-[#ec4d25]" />
                 Tax-Exempt Donations (80G)
               </Link>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-slate-800/80 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+        <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
           <p>© {new Date().getFullYear()} GTT Foundation. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-slate-300 transition">Privacy Policy</a>
-            <a href="#" className="hover:text-slate-300 transition">Transparency Reports</a>
-            <a href="#" className="hover:text-slate-300 transition">Terms of Use</a>
+            <a href="#" className="hover:text-slate-300 transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-slate-300 transition-colors">Transparency Reports</a>
+            <a href="#" className="hover:text-slate-300 transition-colors">Terms of Use</a>
           </div>
         </div>
       </div>
